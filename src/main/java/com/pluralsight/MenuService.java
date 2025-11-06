@@ -48,28 +48,50 @@ public class MenuService {
             System.out.println(orderMenu);
             orderCommand = ConsoleHelper.promptForInt("Enter your command");
             switch (orderCommand) {
-                case 1 -> addSandwich();
+                case 1:
+                    addSandwich(currentOrder);
                     System.out.println("======================");
                     break;
 
-                case 2 -> addDrink();
+                case 2:
+                    addDrink(currentOrder);
                     System.out.println("======================");
                     break;
 
-                case 3 -> addChips();
+                case 3:
+                    addChips(currentOrder);
                     System.out.println("======================");
                     break;
 
-                case 4 -> checkout();
+                case 4:
+                    checkout(currentOrder);
                     System.out.println("======================");
                     break;
 
-                case 0 -> System.out.println("Order cancelled! Returning to home menu...");
+                case 0:
+                    System.out.println("Order cancelled! Returning to home menu...");
                     return;
 
-                default -> System.out.println("Invalid input. Please enter a valid option.");
+                default:
+                    System.out.println("Invalid input. Please enter a valid option.");
                     System.out.println("======================");
             }
         } while (true);
+    }
+
+    private void checkout(Order order) {
+        System.out.println("Checkout works");
+    }
+
+    private void addChips(Order order) {
+        System.out.println("addChips works");
+    }
+
+    private void addDrink(Order order) {
+        System.out.println("addDrink works");
+    }
+
+    private void addSandwich(Order order) {
+        System.out.println("addSandwich works");
     }
 }
