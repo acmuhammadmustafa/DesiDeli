@@ -86,7 +86,7 @@ public class MenuService {
         try {
             FileWriter fw = new FileWriter(order.getReceipt());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.printReceipt() + Math.random()*10000);
+            bw.write(order.printReceipt());
             bw.close();
 
             System.out.println("Receipt saved as: " + order.getReceipt());

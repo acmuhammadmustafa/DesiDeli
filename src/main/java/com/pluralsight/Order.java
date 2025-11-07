@@ -12,6 +12,7 @@ public class Order {
     private List<Sandwich> sandwich = new ArrayList<>();
     private List<Drink> drink = new ArrayList<>();
     private List<Chips> chip = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
     private double price;
     private static int orderCounter = 0;
     // Constructor:
@@ -25,6 +26,10 @@ public class Order {
     public void addDrink(Drink d) { drink.add(d); }
     public void addChips(Chips c) { chip.add(c); }
 
+    public void addOrderItem(OrderItem orderItem){
+        this.items.add((orderItem));
+    }
+
 
 
     public double getTotal() {
@@ -33,6 +38,10 @@ public class Order {
         for (Drink d : drink) total += d.getPrice();
         for (Chips c : chip) total += c.getPrice();
         return total;
+
+//        for (OrderItem item : items){
+//            total += item.getPrice();
+//        }
     }
     public String printReceipt() {
         String receipt = "===== Receipt =====";
