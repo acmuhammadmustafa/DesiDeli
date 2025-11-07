@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    // Variables:
     private LocalDateTime time;
     private String receipt;
     private List<Sandwich> sandwich = new ArrayList<>();
@@ -13,18 +14,18 @@ public class Order {
     private List<Chips> chip = new ArrayList<>();
     private double price;
     private static int orderCounter = 0;
-
+    // Constructor:
     public Order() {
         this.time = LocalDateTime.now();
         orderCounter++;
         this.receipt = time.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
     }
-
+// Method based on what is being added to order:
     public void addSandwich(Sandwich s) { sandwich.add(s); }
     public void addDrink(Drink d) { drink.add(d); }
     public void addChips(Chips c) { chip.add(c); }
 
-    public String getReceipt(){return receipt;}
+
 
     public double getTotal() {
         double total = 0; // Total starts at 0 and adds as goes:
@@ -60,4 +61,8 @@ public class Order {
         receipt += "==============================\n";
         return receipt;
     }
+
+
+    public String getReceipt(){
+        return receipt;}
 }
