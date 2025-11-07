@@ -118,7 +118,15 @@ public class MenuService {
     }
 
     private void addSandwich(Order order) {
-        System.out.println("addSandwich works");
+        System.out.println("------ Nom Nom Nom ------");
+        String bread = ConsoleHelper.promptForString("Choose bread (white, wheat, rye, wrap)").toLowerCase().trim();
+        int length = ConsoleHelper.promptForInt("Choose the size (4, 8, or 12)");
+        String toastedInput = ConsoleHelper.promptForString("Toasted? (Y/N)").toLowerCase().trim();
+        boolean toasted = toastedInput.equals("y") || toastedInput.equals("yes");
+
+        Sandwich s = new Sandwich(bread, length, toasted);
+        order.addSandwich(s);
+        System.out.println("Sandwich added: " + s);
     }
 
 }
