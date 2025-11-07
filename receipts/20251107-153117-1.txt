@@ -1,0 +1,11 @@
+===== Receipt =====
+Date: 2025-11-07 15:31:17
+
+Sandwiches:
+  - 8 inches wrap | Toasted: no | $7.00
+
+Chips:
+  - Chip(s): bbq
+
+Total: $7.00
+==============================

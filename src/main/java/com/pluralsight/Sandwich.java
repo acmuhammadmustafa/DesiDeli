@@ -26,7 +26,7 @@ public class Sandwich extends OrderItem{
     }
 
     public String toString() {
-        return length + " inches " + bread + (toasted ? "| Toasted:" : "") + String.format("| $%.2f", price);
+        return length + " inch " + bread + (toasted ? "| Toasted: " : " ") + String.format("| $%.2f", price);
     }
 
 }

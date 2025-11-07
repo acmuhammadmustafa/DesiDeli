@@ -1,0 +1,8 @@
+===== Receipt =====
+Date: 2025-11-07 15:30:31
+
+Sandwiches:
+  - 12 inches white| Toasted:| $8.50
+
+Total: $8.50
+==============================

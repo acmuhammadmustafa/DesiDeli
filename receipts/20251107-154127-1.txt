@@ -1,0 +1,15 @@
+===== Receipt =====
+Date: 2025-11-07 15:41:27
+
+Sandwiches:
+  - 4 inch ryetrue| $5.50
+  - 8 inch white| Toasted: | $7.00
+
+Drinks:
+  - Drink: small| Size: soda
+
+Chips:
+  - Chip(s): bbq
+
+Total: $12.50
+==============================

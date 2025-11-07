@@ -130,8 +130,14 @@ public class MenuService {
         String bread = ConsoleHelper.promptForString("Choose bread (white, wheat, rye, wrap)").toLowerCase().trim();
         int length = ConsoleHelper.promptForInt("Choose the size (4, 8, or 12)");
         String toastedInput = ConsoleHelper.promptForString("Toasted? (Y/N)").toLowerCase().trim();
-        boolean toasted = toastedInput.equals("y") || toastedInput.equals("yes");
+        boolean toasted = toastedInput.equalsIgnoreCase("y") || toastedInput.equalsIgnoreCase("yes");
+//        if (toasted){
+//            (String) toasted = "Yes";
+//        }
 
+//        String financeOption = ConsoleHelper.promptForString("Would you like to finance your vehicle? (Y/N)");
+//
+//        boolean financeOutput = financeOption.equalsIgnoreCase("Y") ? true : false;
         Sandwich s = new Sandwich(bread, length, toasted);
         order.addItem(s);
         System.out.println("Sandwich added: " + s);

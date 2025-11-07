@@ -1,0 +1,14 @@
+===== Receipt =====
+Date: 2025-11-07 16:20:41
+
+Sandwiches:
+  - 4 inch f| Toasted: | $5.50
+
+Drinks:
+  - Drink: medium| Size: juice
+
+Chips:
+  - Chip(s): bbq
+
+Total: $5.50
+==============================
