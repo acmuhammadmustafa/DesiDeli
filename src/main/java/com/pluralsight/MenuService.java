@@ -6,19 +6,19 @@ import java.io.IOException;
 
 public class MenuService {
 
-    public void homeMenu(){
-    System.out.println("=======================");
+    public void homeMenu() {
+        System.out.println("=======================");
         System.out.println("Welcome to the Desi Deli!");
         System.out.println("=======================");
         System.out.println();
-    int command;
+        int command;
         do {
-        System.out.println();
+            System.out.println();
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------
-        // Home Menu:
-        System.out.println("====== Home Menu ======");
-        String homeMenu = "What would you like to do?\n 1) New Order\n 0) Exit\n=======================\n";
-        System.out.println(homeMenu);
+            // Home Menu:
+            System.out.println("====== Home Menu ======");
+            String homeMenu = "What would you like to do?\n 1) New Order\n 0) Exit\n=======================\n";
+            System.out.println(homeMenu);
             command = ConsoleHelper.promptForInt("Enter your command");
             switch (command) {
                 case 1:
@@ -97,50 +97,48 @@ public class MenuService {
     }
 
     private void checkout(Order order) {
-        System.out.println("========= Receipt =========");
-        System.out.println(order.getReceiptFileName());
-        String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase().trim();
-
-        if (confirm.equals("y") || confirm.equals("yes")) {
-            saveReceiptToFileAndFolder(order);
-            System.out.println("Order confirmed and receipt saved...");
-        } else {
-            System.out.println("Order cancelled. Returning to the order menu...");
+        if (order.isEmpty()) {
+            System.out.println("Your order is empty! Please add items before checking out.");
+            return;
         }
-    }
+            System.out.println("========= Receipt =========");
+            System.out.println(order.getReceiptContent());
+            String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase().trim();
 
-    private void addChips(Order order) {
-        String type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, or Sour Cream)").toLowerCase().trim();
+            if (confirm.equals("y") || confirm.equals("yes")) {
+                saveReceiptToFileAndFolder(order);
+                System.out.println("Order confirmed and receipt saved...");
+            } else {
+                System.out.println("Order cancelled. Returning to the order menu...");
+            }
+        }
 
-        Chips c = new Chips(type);
-        order.addItem(c);
-        System.out.println("Chips added: " + c);    }
+        private void addChips (Order order){
+            System.out.println("========= Chips Selection =========");
+            String type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, Sour Cream, etc.)").trim();
 
-    private void addDrink(Order order) {
-        String size = ConsoleHelper.promptForString("Choose size (small, medium, or large)").toLowerCase().trim();
-        String flavor = ConsoleHelper.promptForString("Choose drink (soda, juice, or water)").toLowerCase().trim();
+            Chips chips = new Chips(type);
+            order.addItem(chips);
+            System.out.println("Chips added: " + chips);
+        }
 
-        Drink d = new Drink(size, flavor);
-        order.addItem(d);
-        System.out.println("Drink added: " + d);
-    }
+        private void addDrink (Order order){
+            String size = ConsoleHelper.promptForString("Choose size (small, medium, or large)").toLowerCase().trim();
+            String flavor = ConsoleHelper.promptForString("Choose drink (soda, juice, or water)").toLowerCase().trim();
 
-    private void addSandwich(Order order) {
-        System.out.println("------ Nom Nom Nom ------");
-        String bread = ConsoleHelper.promptForString("Choose bread (white, wheat, rye, wrap)").toLowerCase().trim();
-        int length = ConsoleHelper.promptForInt("Choose the size (4, 8, or 12)");
-        String toastedInput = ConsoleHelper.promptForString("Toasted? (Y/N)").toLowerCase().trim();
-        boolean toasted = toastedInput.equalsIgnoreCase("y") || toastedInput.equalsIgnoreCase("yes");
-//        if (toasted){
-//            (String) toasted = "Yes";
-//        }
+            Drink d = new Drink(size, flavor);
+            order.addItem(d);
+            System.out.println("Drink added: " + d);
+        }
 
-//        String financeOption = ConsoleHelper.promptForString("Would you like to finance your vehicle? (Y/N)");
-//
-//        boolean financeOutput = financeOption.equalsIgnoreCase("Y") ? true : false;
-        Sandwich s = new Sandwich(bread, length, toasted);
-        order.addItem(s);
-        System.out.println("Sandwich added: " + s);
-    }
-
+        private void addSandwich (Order order){
+            System.out.println("------ Nom Nom Nom ------");
+            String bread = ConsoleHelper.promptForString("Choose bread (white, wheat, rye, wrap)").toLowerCase().trim();
+            int length = ConsoleHelper.promptForInt("Choose the size (4, 8, or 12)");
+            String toastedInput = ConsoleHelper.promptForString("Toasted? (Y/N)").toLowerCase().trim();
+            boolean toasted = toastedInput.equalsIgnoreCase("y") || toastedInput.equalsIgnoreCase("yes");
+            Sandwich s = new Sandwich(bread, length, toasted);
+            order.addItem(s);
+            System.out.println("Sandwich added: " + s);
+        }
 }

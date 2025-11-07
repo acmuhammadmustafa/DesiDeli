@@ -11,11 +11,9 @@ public abstract class Toppings {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double calculatePrice(int sandwichSize) {
+        return 0;
     }
-
-    public abstract double calculatePrice(int sandwichSize);
 
     @Override
     public String toString() {

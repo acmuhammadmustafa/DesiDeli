@@ -8,14 +8,15 @@ public class Meat extends Toppings{
         this.extra = extra;
     }
 
-
-    public double calcPrice(int sandwichSize){
+    @Override
+    public double calculatePrice(int sandwichSize) {
         double basePrice = switch (sandwichSize) {
             case 4 -> 1.00;
             case 8 -> 2.00;
             case 12 -> 3.00;
             default -> 0.0;
         };
+
         if (extra) {
             double extraPrice = switch (sandwichSize) {
                 case 4 -> 0.50;
@@ -27,11 +28,6 @@ public class Meat extends Toppings{
         }
 
         return basePrice;
-    }
-
-    @Override
-    public double calculatePrice(int sandwichSize) {
-        return calcPrice(sandwichSize);
     }
 
     @Override
