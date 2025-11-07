@@ -82,14 +82,14 @@ public class MenuService {
         } while (true);
     }
 
-    private void saveReceipt(Order order) {
+    private void saveReceiptToFileAndFolder(Order order) {
         try {
-            FileWriter fw = new FileWriter(order.getReceipt());
+            FileWriter fw = new FileWriter(order.getReceiptFileName());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.printReceipt());
+            bw.write(order.getReceiptContent());
             bw.close();
 
-            System.out.println("Receipt saved as: " + order.getReceipt());
+            System.out.println("Receipt saved as: " + order.getReceiptFileName());
 
         } catch (IOException e) {
             System.out.println("Error occurred: " + e.getMessage());
@@ -98,11 +98,11 @@ public class MenuService {
 
     private void checkout(Order order) {
         System.out.println("========= Receipt =========");
-        System.out.println(order.getReceipt());
+        System.out.println(order.getReceiptFileName());
         String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase().trim();
 
         if (confirm.equals("y") || confirm.equals("yes")) {
-            saveReceipt(order);
+            saveReceiptToFileAndFolder(order);
             System.out.println("Order confirmed and receipt saved...");
         } else {
             System.out.println("Order cancelled. Returning to the order menu...");
@@ -110,11 +110,19 @@ public class MenuService {
     }
 
     private void addChips(Order order) {
-        System.out.println("addChips works");
-    }
+        String type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, or Sour Cream)").toLowerCase().trim();
+
+        Chips c = new Chips(type);
+        order.addItem(c);
+        System.out.println("Chips added: " + c);    }
 
     private void addDrink(Order order) {
-        System.out.println("addDrink works");
+        String size = ConsoleHelper.promptForString("Choose size (small, medium, or large)").toLowerCase().trim();
+        String flavor = ConsoleHelper.promptForString("Choose drink (soda, juice, or water)").toLowerCase().trim();
+
+        Drink d = new Drink(size, flavor);
+        order.addItem(d);
+        System.out.println("Drink added: " + d);
     }
 
     private void addSandwich(Order order) {
@@ -125,7 +133,7 @@ public class MenuService {
         boolean toasted = toastedInput.equals("y") || toastedInput.equals("yes");
 
         Sandwich s = new Sandwich(bread, length, toasted);
-        order.addSandwich(s);
+        order.addItem(s);
         System.out.println("Sandwich added: " + s);
     }
 

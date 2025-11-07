@@ -7,71 +7,83 @@ import java.util.List;
 
 public class Order {
     // Variables:
-    private LocalDateTime time;
-    private String receipt;
-    private List<Sandwich> sandwich = new ArrayList<>();
-    private List<Drink> drink = new ArrayList<>();
-    private List<Chips> chip = new ArrayList<>();
+    private LocalDateTime orderTime;
+    private String receiptFileName;
     private List<OrderItem> items = new ArrayList<>();
-    private double price;
     private static int orderCounter = 0;
     // Constructor:
     public Order() {
-        this.time = LocalDateTime.now();
+        this.orderTime = LocalDateTime.now();
         orderCounter++;
-        this.receipt = time.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
+        this.receiptFileName = orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
     }
 // Method based on what is being added to order:
-    public void addSandwich(Sandwich s) { sandwich.add(s); }
-    public void addDrink(Drink d) { drink.add(d); }
-    public void addChips(Chips c) { chip.add(c); }
-
-    public void addOrderItem(OrderItem orderItem){
+    public void addItem(OrderItem orderItem){
         this.items.add((orderItem));
     }
 
-
-
-    public double getTotal() {
+    public double calculateTotal() {
         double total = 0; // Total starts at 0 and adds as goes:
-        for (Sandwich s : sandwich) total += s.getPrice();
-        for (Drink d : drink) total += d.getPrice();
-        for (Chips c : chip) total += c.getPrice();
+
+        for (OrderItem item : items){
+            total += item.getPrice();
+        }
         return total;
-
-//        for (OrderItem item : items){
-//            total += item.getPrice();
-//        }
-    }
-    public String printReceipt() {
-        String receipt = "===== Receipt =====";
-        receipt += "Date: " + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n";
-        System.out.println();
-
-        if (!sandwich.isEmpty()) {
-            receipt += "Sandwiches:\n";
-            for (Sandwich s : sandwich)
-                receipt += ": " + s + "\n";
-        }
-
-        if (!drink.isEmpty()) {
-            receipt += "Drinks:\n";
-            for (Drink d : drink)
-                receipt += ": " + d + "\n";
-        }
-
-        if (!chip.isEmpty()) {
-            receipt += "Chips:\n";
-            for (Chips c : chip)
-                receipt += ": " + c + "\n";
-        }
-
-        receipt += String.format("Total: $%.2f%n", getTotal());
-        receipt += "==============================\n";
-        return receipt;
     }
 
+    public String getReceiptContent() {
+        StringBuilder receipt = new StringBuilder("===== Receipt =====\n");
+        receipt.append("Date: ").append(orderTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n\n");
 
-    public String getReceipt(){
-        return receipt;}
+        // Separate items by type for display
+        boolean hasSandwiches = false;
+        for (OrderItem item : items) {
+            if (item instanceof Sandwich) {
+                if (!hasSandwiches) {
+                    receipt.append("Sandwiches:\n");
+                    hasSandwiches = true;
+                }
+                receipt.append("  - ").append(item).append("\n");
+            }
+        }
+
+        boolean hasDrinks = false;
+        for (OrderItem item : items) {
+            if (item instanceof Drink) {
+                if (!hasDrinks) {
+                    receipt.append("\nDrinks:\n");
+                    hasDrinks = true;
+                }
+                receipt.append("  - ").append(item).append("\n");
+            }
+        }
+
+        boolean hasChips = false;
+        for (OrderItem item : items) {
+            if (item instanceof Chips) {
+                if (!hasChips) {
+                    receipt.append("\nChips:\n");
+                    hasChips = true;
+                }
+                receipt.append("  - ").append(item).append("\n");
+            }
+        }
+
+        receipt.append(String.format("\nTotal: $%.2f\n", calculateTotal()));
+        receipt.append("==============================\n");
+        return receipt.toString();
+    }
+
+    public String getReceiptFileName() {
+        return receiptFileName;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
 }

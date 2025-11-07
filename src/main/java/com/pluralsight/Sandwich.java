@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Sandwich {
+public class Sandwich extends OrderItem{
     private String bread;
     private int length;
     private boolean toasted;
@@ -20,12 +20,13 @@ public class Sandwich {
             default -> 0.0;
         };
     }
+    @Override
     public double getPrice() {
         return price;
     }
 
     public String toString() {
-        return length + " Inches " + bread + (toasted ? " | Toasted:" : "") + String.format("| $%.2f", price);
+        return length + " inches " + bread + (toasted ? "| Toasted:" : "") + String.format("| $%.2f", price);
     }
 
 }
