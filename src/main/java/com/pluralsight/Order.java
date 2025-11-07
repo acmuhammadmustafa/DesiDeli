@@ -31,37 +31,31 @@ public class Order {
         for (Chips c : chip) total += c.getPrice();
         return total;
     }
-    public void printReceipt() {
-        System.out.println("===== Receipt =====");
-        System.out.println("Date: " + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    public String printReceipt() {
+        String receipt = "===== Receipt =====";
+        receipt += "Date: " + time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n";
         System.out.println();
 
         if (!sandwich.isEmpty()) {
-            System.out.println("Sandwiches:");
+            receipt += "Sandwiches:\n";
             for (Sandwich s : sandwich)
-                System.out.println(": " + s);
-            System.out.println();
+                receipt += ": " + s + "\n";
         }
 
         if (!drink.isEmpty()) {
-            System.out.println("Drinks:");
+            receipt += "Drinks:\n";
             for (Drink d : drink)
-                System.out.println(": " + d);
-            System.out.println();
+                receipt += ": " + d + "\n";
         }
 
         if (!chip.isEmpty()) {
-            System.out.println("Chips:");
+            receipt += "Chips:\n";
             for (Chips c : chip)
-                System.out.println(": " + c);
-            System.out.println();
+                receipt += ": " + c + "\n";
         }
 
-        System.out.printf("Total: $%.2f\n", getTotal());
-        System.out.println("==============================");
+        receipt += String.format("Total: $%.2f%n", getTotal());
+        receipt += "==============================\n";
+        return receipt;
     }
-
-
-
-
 }

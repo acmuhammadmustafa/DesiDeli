@@ -41,7 +41,7 @@ public class MenuService {
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------
     // Order Menu:
 
-    private void orderScreen() {
+    public void orderScreen() {
         Order currentOrder = new Order();
         int orderCommand;
         do {
@@ -86,10 +86,7 @@ public class MenuService {
         try {
             FileWriter fw = new FileWriter(order.getReceipt());
             BufferedWriter bw = new BufferedWriter(fw);
-            order.printReceipt();
-            bw.write("===== Receipt =====\n");
-            bw.write("Date: " + order.getReceipt() + "\n");
-            bw.write("Total: $" + order.getTotal() + "\n");
+            bw.write(order.printReceipt());
             bw.close();
 
             System.out.println("Receipt saved as: " + order.getReceipt());
@@ -102,13 +99,13 @@ public class MenuService {
     private void checkout(Order order) {
         System.out.println("========= Receipt =========");
         System.out.println(order.getReceipt());
-        String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase();
+        String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase().trim();
 
         if (confirm.equals("y") || confirm.equals("yes")) {
             saveReceipt(order);
             System.out.println("Order confirmed and receipt saved...");
         } else {
-            System.out.println("Order cancelled. Returning to main menu...");
+            System.out.println("Order cancelled. Returning to the order menu...");
         }
     }
 
