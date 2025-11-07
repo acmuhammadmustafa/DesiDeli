@@ -12,10 +12,12 @@ public class Order {
     private List<Drink> drink = new ArrayList<>();
     private List<Chips> chip = new ArrayList<>();
     private double price;
+    private static int orderCounter = 0;
 
     public Order() {
         this.time = LocalDateTime.now();
-        this.receipt = time.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + ".txt";
+        orderCounter++;
+        this.receipt = time.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
     }
 
     public void addSandwich(Sandwich s) { sandwich.add(s); }

@@ -69,7 +69,7 @@ public class MenuService {
                 case 4:
                     checkout(currentOrder);
                     System.out.println("======================");
-                    break;
+                    return;
 
                 case 0:
                     System.out.println("Order cancelled! Returning to home menu...");
@@ -86,7 +86,7 @@ public class MenuService {
         try {
             FileWriter fw = new FileWriter(order.getReceipt());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.printReceipt());
+            bw.write(order.printReceipt() + Math.random()*10000);
             bw.close();
 
             System.out.println("Receipt saved as: " + order.getReceipt());
