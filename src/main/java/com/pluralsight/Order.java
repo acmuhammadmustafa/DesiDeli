@@ -22,6 +22,8 @@ public class Order {
     public void addDrink(Drink d) { drink.add(d); }
     public void addChips(Chips c) { chip.add(c); }
 
+    public String getReceipt(){return receipt;}
+
     public double getTotal() {
         double total = 0; // Total starts at 0 and adds as goes:
         for (Sandwich s : sandwich) total += s.getPrice();
@@ -58,6 +60,8 @@ public class Order {
         System.out.printf("Total: $%.2f\n", getTotal());
         System.out.println("==============================");
     }
-    public String getReceipt() { return receipt; }
+
+
+
 
 }

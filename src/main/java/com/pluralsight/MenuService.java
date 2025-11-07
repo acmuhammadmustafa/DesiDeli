@@ -1,5 +1,9 @@
 package com.pluralsight;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class MenuService {
 
     public void homeMenu(){
@@ -22,7 +26,6 @@ public class MenuService {
                     System.out.println("======================");
 
                     break;
-
 
                 case 0:
                     System.out.println("Goodbye!");
@@ -79,8 +82,34 @@ public class MenuService {
         } while (true);
     }
 
+    private void saveReceipt(Order order) {
+        try {
+            FileWriter fw = new FileWriter(order.getReceipt());
+            BufferedWriter bw = new BufferedWriter(fw);
+            order.printReceipt();
+            bw.write("===== Receipt =====\n");
+            bw.write("Date: " + order.getReceipt() + "\n");
+            bw.write("Total: $" + order.getTotal() + "\n");
+            bw.close();
+
+            System.out.println("Receipt saved as: " + order.getReceipt());
+
+        } catch (IOException e) {
+            System.out.println("Error occurred: " + e.getMessage());
+        }
+    }
+
     private void checkout(Order order) {
-        System.out.println("Checkout works");
+        System.out.println("========= Receipt =========");
+        System.out.println(order.getReceipt());
+        String confirm = ConsoleHelper.promptForString("Confirm order? (Y/N): ").toLowerCase();
+
+        if (confirm.equals("y") || confirm.equals("yes")) {
+            saveReceipt(order);
+            System.out.println("Order confirmed and receipt saved...");
+        } else {
+            System.out.println("Order cancelled. Returning to main menu...");
+        }
     }
 
     private void addChips(Order order) {
@@ -94,4 +123,5 @@ public class MenuService {
     private void addSandwich(Order order) {
         System.out.println("addSandwich works");
     }
+
 }
