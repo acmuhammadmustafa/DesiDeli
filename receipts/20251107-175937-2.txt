@@ -1,0 +1,14 @@
+===== Receipt =====
+Date: 2025-11-07 17:59:37
+
+Sandwiches:
+  - 12" | white bread | Toasted | Toppings: chicken, american (extra), lettuce, peppers, onions, mayo | $14.65
+
+Drinks:
+  - small juice | $2.00
+
+Chips:
+  - BBQ Chips | $1.50
+
+Total: $18.15
+==============================

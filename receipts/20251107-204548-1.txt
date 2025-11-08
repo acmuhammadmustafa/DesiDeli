@@ -1,0 +1,16 @@
+===== Receipt =====
+Date: 2025-11-07 20:45:48
+
+Sandwiches:
+  - 4" | rye bread | Toasted | Toppings: ham (extra), bacon, swiss, lettuce, peppers, onions, mayo | $8.75
+
+Drinks:
+  - small water | $2.00
+  - large soda | $3.00
+
+Chips:
+  - cheddar Chips | $1.50
+  - bbq Chips | $1.50
+
+Total: $16.75
+==============================

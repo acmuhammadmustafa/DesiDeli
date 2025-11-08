@@ -1,0 +1,14 @@
+===== Receipt =====
+Date: 2025-11-07 21:22:44
+
+Sandwiches:
+  - 12" | white bread | Toasted | Toppings: chicken, mayo | $11.50
+
+Drinks:
+  - medium soda | $2.50
+
+Chips:
+  - plain Chips | $1.50
+
+Total: $15.50
+==============================

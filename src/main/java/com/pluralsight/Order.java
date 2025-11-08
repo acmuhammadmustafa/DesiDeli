@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+
     // Variables:
     private LocalDateTime orderTime;
     private String receiptFileName;
     private List<OrderItem> items = new ArrayList<>();
     private static int orderCounter = 0;
+
     // Constructor:
     public Order() {
         this.orderTime = LocalDateTime.now();
         orderCounter++;
-        this.receiptFileName = orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
+//        this.receiptFileName = orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
+        this.receiptFileName = "receipts/" + orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-")) + orderCounter + ".txt";
     }
 // Method based on what is being added to order:
     public void addItem(OrderItem orderItem){

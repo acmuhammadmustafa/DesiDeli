@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich extends OrderItem{
@@ -12,6 +13,7 @@ public class Sandwich extends OrderItem{
         this.bread = bread;
         this.length = length;
         this.toasted = toasted;
+        this.toppings = new ArrayList<>();
     }
 
     public void addTopping(Toppings topping) {
@@ -23,7 +25,7 @@ public class Sandwich extends OrderItem{
             case 4 -> 5.50;
             case 8 -> 7.00;
             case 12 -> 8.50;
-            default -> 0.0;
+            default -> 0;
         };
     }
     @Override
@@ -54,5 +56,7 @@ public class Sandwich extends OrderItem{
                 toppingsList +
                 String.format(" | $%.2f", getPrice());
     }
-
+    public List<Toppings> getToppings() {
+        return toppings;
+    }
 }
