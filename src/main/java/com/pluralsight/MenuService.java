@@ -92,7 +92,7 @@ public class MenuService {
         // Breads
         List<Integer> breadList = Arrays.asList(1,2,3,4);
         System.out.println("Bread list:\n 1) White\n 2) Wheat\n 3) Rye\n 4) Wrap\n");
-        String bread = null;
+        String bread;
         int customerBreadChoice;
 
         while (true) {
@@ -127,11 +127,11 @@ public class MenuService {
                 System.out.println("Invalid size. Please enter 4, 8, or 12.");
             }
         }
-        switch (customerSizeChoice) {
-            case 1 -> length = 4;
-            case 2 -> length = 8;
-            case 3 -> length = 12;
-            default -> length = 0;
+        length = switch (customerSizeChoice) {
+            case 1 -> 4;
+            case 2 -> 8;
+            case 3 -> 12;
+            default -> 0;
         };
         Sandwich sandwich = new Sandwich(bread, length, false);
 
@@ -140,7 +140,7 @@ public class MenuService {
         boolean addMeat = ConsoleHelper.promptForYesNo("Add meat?");
 
         while (addMeat) {
-            String meatType = null;
+            String meatType;
             int customerMeatChoice;
             System.out.println("Meat options:\n 1) Steak\n 2) Ham\n 3) Salami\n 4) Roast Beef\n 5) Chicken\n 6) Bacon\n");
             while (true) {
@@ -195,44 +195,68 @@ public class MenuService {
         }
 
         // Toppings
-        List<String> toppingsList = Arrays.asList("lettuce", "peppers", "onions", "tomatoes", "jalapeños", "cucumbers", "pickles", "guacamole", "mushrooms");
+        List<Integer> toppingsList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         boolean addRegular = ConsoleHelper.promptForYesNo("Add regular toppings?");
 
         while (addRegular) {
+            System.out.println("Regular topping options:\n1) Lettuce\n2) Peppers\n3) Onions\n4) Tomatoes\n5) Jalapeños\n6) Cucumbers\n7) Pickles\n8) Guacamole\n9) Mushrooms");
             String toppingType;
+            int customerTopping;
 
             while (true) {
-                toppingType = ConsoleHelper.promptForString("Choose topping (Lettuce, Peppers, Onions, Tomatoes, Jalapeños, Cucumbers, Pickles, Guacamole, or Mushrooms)").toLowerCase().trim();
-                if (toppingsList.contains(toppingType)) {
+                customerTopping = ConsoleHelper.promptForInt("Choose topping");
+                if (toppingsList.contains(customerTopping)) {
                     break;
                 } else {
                     System.out.println("Invalid topping. Please choose from the options listed.");
                 }
             }
+            toppingType = switch (customerBreadChoice) {
+                case 1 -> "Lettuce";
+                case 2 -> "Peppers";
+                case 3 -> "Onions";
+                case 4 -> "Tomatoes";
+                case 5 -> "Jalapeños";
+                case 6 -> "Cucumbers";
+                case 7 -> "Pickles";
+                case 8 -> "Guacamole";
+                case 9 -> "Mushrooms";
+                default -> "Error";
+            };
             sandwich.addTopping(new Toppings(toppingType) {
             });
             addRegular = ConsoleHelper.promptForYesNo("Add another topping?");
         }
 
         // Sauces
-        List<String> sauceList = Arrays.asList("mayo", "mustard", "ketchup", "ranch", "thousand islands", "vinaigrette");
+        List<Integer> sauceList = Arrays.asList(1, 2, 3, 4, 5, 6);
         boolean addSauce = ConsoleHelper.promptForYesNo("Add sauce?");
 
         while (addSauce) {
+            System.out.println("Sauce options:\n1) Mayo\n2) Mustard\n3) Ketchup\n4) Ranch\n5) Thousand Islands\n6) Vinaigrette");
             String sauceType;
+            int customerSauce;
 
             while (true) {
-                sauceType = ConsoleHelper.promptForString("Choose sauce (Mayo, Mustard, Ketchup, Ranch, Thousand Islands, or Vinaigrette)").toLowerCase().trim();
-                if (sauceList.contains(sauceType)) {
+                customerSauce = ConsoleHelper.promptForInt("Choose sauce (Mayo, Mustard, Ketchup, Ranch, Thousand Islands, or Vinaigrette)");
+                if (sauceList.contains(customerSauce)) {
                     break;
                 } else {
                     System.out.println("Invalid sauce. Please choose from the options listed.");
                 }
             }
+            sauceType = switch (customerSauce) {
+                case 1 -> "Mayo";
+                case 2 -> "Mustard";
+                case 3 -> "Ketchup";
+                case 4 -> "Ranch";
+                case 5 -> "Thousand Islands";
+                case 6 -> "Vinaigrette";
+                default -> "Error";
+            };
             sandwich.addTopping(new Sauce(sauceType));
             addSauce = ConsoleHelper.promptForYesNo("Add another sauce?");
         }
-
         // Toasted?
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
 
