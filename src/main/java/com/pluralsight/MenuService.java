@@ -136,20 +136,29 @@ public class MenuService {
         Sandwich sandwich = new Sandwich(bread, length, false);
 
         //Meats
-        List<String> meatList = Arrays.asList("1", "2", "3", "4", "5", "6");
+        List<Integer> meatList = Arrays.asList(1, 2, 3, 4, 5, 6);
         boolean addMeat = ConsoleHelper.promptForYesNo("Add meat?");
 
         while (addMeat) {
-            String meatType;
+            String meatType = null;
+            int customerMeatChoice;
             System.out.println("Meat options:\n 1) Steak\n 2) Ham\n 3) Salami\n 4) Roast Beef\n 5) Chicken\n 6) Bacon\n");
             while (true) {
-                meatType = ConsoleHelper.promptForString("Choose meat");
-                if (meatList.contains(meatType)) {
+                customerMeatChoice = ConsoleHelper.promptForInt("Choose meat");
+                if (meatList.contains(customerMeatChoice)) {
                     break;
                 }
                 System.out.println("Invalid meat type. Please choose from the options listed.");
             }
-
+            meatType = switch (customerBreadChoice) {
+            case 1 -> "Steak";
+            case 2 -> "Ham";
+            case 3 -> "Salami";
+            case 4 -> "Roast Beef";
+            case 5 -> "Chicken";
+            case 6 -> "Bacon";
+            default -> "Error";
+        };
             boolean extra = ConsoleHelper.promptForYesNo("Extra/Double meat?");
             sandwich.addTopping(new Meat(meatType, extra));
 
@@ -157,20 +166,28 @@ public class MenuService {
         }
 
         // Cheeses
-        List<String> cheeseList = Arrays.asList("american", "provolone", "cheddar", "swiss");
+        List<Integer> cheeseList = Arrays.asList(1, 2, 3, 4);
         boolean addCheese = ConsoleHelper.promptForYesNo("Add cheese?");
 
         while (addCheese) {
             String cheeseType;
+            int customerCheeseChoice;
 
             while (true) {
-                cheeseType = ConsoleHelper.promptForString("Choose cheese (American, Provolone, Cheddar, or Swiss)").toLowerCase().trim();
-                if (cheeseList.contains(cheeseType)) {
+                System.out.println("Meat options:\n 1) American\n 2) Provolone\n 3) Cheddar\n 4) Swiss\n");
+                customerCheeseChoice = ConsoleHelper.promptForInt("Choose cheese");
+                if (cheeseList.contains(customerCheeseChoice)) {
                     break;
                 }
                 System.out.println("Invalid cheese type. Please choose from the options listed.");
             }
-
+            cheeseType = switch (customerBreadChoice) {
+                case 1 -> "American";
+                case 2 -> "Provolone";
+                case 3 -> "Cheddar";
+                case 4 -> "Swiss";
+                default -> "Error";
+            };
             boolean extra = ConsoleHelper.promptForYesNo("Extra cheese?");
             sandwich.addTopping(new Cheese(cheeseType, extra));
 
@@ -239,16 +256,26 @@ public class MenuService {
    Crunchy, crispy, and full of flavor!
 """);
 
-        List<String> chipList = Arrays.asList("bbq", "plain", "sour cream", "salt & vinegar", "cheddar");
-        String type;
+        List<Integer> chipList = Arrays.asList(1, 2, 3, 4, 5);
+        String type = null;
+        int customerChip;
 
         while (true) {
-            type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, Sour Cream, Salt & Vinegar, Cheddar)").toLowerCase().trim();
-            if (chipList.contains(type)) {
+            System.out.println("1) BBQ\n2) Plain\n3) Sour Cream\n4) Salt & Vinegar\n5) Cheddar");
+            customerChip = ConsoleHelper.promptForInt("Choose chip type");
+            if (chipList.contains(customerChip)) {
                 break;
             } else {
                 System.out.println("Invalid chip type. Please choose from the options listed.");
             }
+            type = switch (customerChip) {
+                case 1 -> "BBQ";
+                case 2 -> "Plain";
+                case 3 -> "Sour Cream";
+                case 4 -> "Salt & Vinegar";
+                case 5 -> "Cheddar";
+                default -> type;
+            };
         }
         Chips chips = new Chips(type);
         order.addItem(chips);
