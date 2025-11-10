@@ -1,9 +1,8 @@
 package com.pluralsight;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.*;
+import java.time.format.*;
+import java.util.*;
 
 public class Order {
 
@@ -17,7 +16,6 @@ public class Order {
     public Order() {
         this.orderTime = LocalDateTime.now();
         orderCounter++;
-//        this.receiptFileName = orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-"))+orderCounter+".txt";
         this.receiptFileName = "receipts/" + orderTime.format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss-")) + orderCounter + ".txt";
     }
 // Method based on what is being added to order:
@@ -35,7 +33,7 @@ public class Order {
     }
 
     public String getReceiptContent() {
-        StringBuilder receipt = new StringBuilder("===== Receipt =====\n");
+        StringBuilder receipt = new StringBuilder("\uD83D\uDCDD━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\uD83D\uDCDD\n");
         receipt.append("Date: ").append(orderTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n\n");
 
         // Separate items by type for display
@@ -54,7 +52,7 @@ public class Order {
         for (OrderItem item : items) {
             if (item instanceof Drink) {
                 if (!hasDrinks) {
-                    receipt.append("\nDrinks:\n");
+                    receipt.append("Drinks:\n");
                     hasDrinks = true;
                 }
                 receipt.append("  - ").append(item).append("\n");
@@ -65,7 +63,7 @@ public class Order {
         for (OrderItem item : items) {
             if (item instanceof Chips) {
                 if (!hasChips) {
-                    receipt.append("\nChips:\n");
+                    receipt.append("Chips:\n");
                     hasChips = true;
                 }
                 receipt.append("  - ").append(item).append("\n");
@@ -73,7 +71,7 @@ public class Order {
         }
 
         receipt.append(String.format("\nTotal: $%.2f\n", calculateTotal()));
-        receipt.append("==============================\n");
+        receipt.append("\uD83D\uDCDD━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\uD83D\uDCDD\n");
         return receipt.toString();
     }
 

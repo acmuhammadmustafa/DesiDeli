@@ -14,11 +14,10 @@ public class MenuService {
         System.out.println();
         int command;
         do {
-// Home Menu:
+        // Home Menu:
             System.out.println("""
 🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖
                        HOME MENU
-🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖
 """);
             String homeMenu = "What would you like to do?\n 1) New Order\n 0) Exit\n🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖\n";
             System.out.println(homeMenu);
@@ -38,7 +37,7 @@ public class MenuService {
                     System.out.println("🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖");
             }
         } while (true);
-    } // Finished!
+    }
 
     public void orderScreen() {
         Order currentOrder = new Order();
@@ -48,7 +47,6 @@ public class MenuService {
             System.out.println("""
 🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯
                        ORDER MENU
-🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯
 """);
             String orderMenu = "What would you like to order?\n 1) Add Sandwich\n 2) Add Drink\n 3) Add Chips\n 4) Checkout\n 0) Cancel Order\n🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯\n";
             System.out.println(orderMenu);
@@ -83,106 +81,6 @@ public class MenuService {
                     System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
             }
         } while (true);
-    } // Finished!
-
-    private void saveReceiptToFileAndFolder(Order order) {
-        try {
-            FileWriter fw = new FileWriter(order.getReceiptFileName());
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.getReceiptContent());
-            bw.close();
-
-            System.out.println("Receipt saved as: " + order.getReceiptFileName());
-
-        } catch (IOException e) {
-            System.out.println("Error saving receipt: " + e.getMessage());
-        }
-    } // Finished!
-
-    private void checkout(Order order) {
-        if (order.isEmpty()) {
-            System.out.println("Your order is empty! Please add items before checking out.");
-            return;
-        }
-
-        System.out.println("""
-🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
-         🛒  FINAL STOP  🛒
-   Would you like to add anything else?
-🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
-""");
-        System.out.println(order.getReceiptContent());
-
-        boolean confirm = ConsoleHelper.promptForYesNo("Confirm order?");
-
-        if (confirm) {
-            saveReceiptToFileAndFolder(order);
-            System.out.println("Order confirmed! Thank you for your purchase.");
-        } else {
-            System.out.println("Order cancelled. Returning to the order menu...");
-        }
-    }
-
-    private void addChips(Order order) {
-        System.out.println("""
-🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
-           🧂  CHIP STOP  🧂
-   Crunchy, crispy, and full of flavor!
-🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
-""");
-
-        List<String> chipList = Arrays.asList("bbq", "plain", "sour cream", "salt & vinegar", "cheddar");
-        String type;
-
-        while (true) {
-            type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, Sour Cream, Salt & Vinegar, Cheddar)").toLowerCase().trim();
-            if (chipList.contains(type)) {
-                break;
-            } else {
-                System.out.println("Invalid chip type. Please choose from the options listed.");
-            }
-        }
-        Chips chips = new Chips(type);
-        order.addItem(chips);
-        System.out.println("Chips added: " + chips);
-    }
-
-    private void addDrink(Order order) {
-        System.out.println("""
-🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
-        🥤  QUENCH YOUR THIRST  🥤
-      Time for something refreshing!
-🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
-""");
-        // Drink sizes
-        List<String> sizeList = Arrays.asList("small", "medium", "large");
-        String size;
-
-        while (true) {
-            size = ConsoleHelper.promptForString("Choose size (Small, Medium, Large)").toLowerCase().trim();
-            if (sizeList.contains(size)) {
-                break;
-            } else {
-                System.out.println("Invalid size. Please enter Small, Medium, or Large.");
-            }
-        }
-
-        List<String> flavorList = Arrays.asList("soda", "water", "juice");
-        String flavor;
-
-        while (true) {
-            flavor = ConsoleHelper.promptForString("Choose beverage (Juice, Water, or Soda)").trim().toLowerCase();
-
-            if (flavorList.contains(flavor)) {
-                break;
-            } else {
-                System.out.println("Invalid beverage. Please enter Juice, Water, or Soda.");
-            }
-        }
-
-        Drink drink = new Drink(size, flavor);
-        order.addItem(drink);
-        System.out.println("Drink added: " + drink);
     }
 
     private void addSandwich(Order order) {
@@ -190,52 +88,69 @@ public class MenuService {
 🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
       🌯  DESI SANDWICH BUILDER  🌯
    Let's make a sandwich worthy of your hunger!
-🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
 """);
         // Breads
-        List<String> breadList = Arrays.asList("white", "wheat", "rye", "wrap");
-        String bread;
+        List<Integer> breadList = Arrays.asList(1,2,3,4);
+        System.out.println("Bread list:\n 1) White\n 2) Wheat\n 3) Rye\n 4) Wrap\n");
+        String bread = null;
+        int customerBreadChoice;
 
         while (true) {
-            bread = ConsoleHelper.promptForString("Choose bread (White, Wheat, Rye, or Wrap)").toLowerCase().trim();
-            if (breadList.contains(bread)) {
+            customerBreadChoice = ConsoleHelper.promptForInt("Choose bread");
+
+            if (breadList.contains(customerBreadChoice)) {
                 break;
             } else {
                 System.out.println("Invalid bread type. Please choose from the options listed.");
             }
         }
+        bread = switch (customerBreadChoice) {
+            case 1 -> "White";
+            case 2 -> "Wheat";
+            case 3 -> "Rye";
+            case 4 -> "Wrap";
+            default -> "Error";
+        };
+        System.out.println();
 
-        // Sizes
-        List<Integer> sizeList = Arrays.asList(4, 8, 12);
+        // Bread Sizes
+        List<Integer> sizeList = Arrays.asList(1, 2, 3);
+        System.out.println("Bread sizes (in inches):\n1) 4 inches\n2) 8 inches\n3) 12 inches");
         int length;
+        int customerSizeChoice;
 
         while (true) {
-            length = ConsoleHelper.promptForInt("Choose the size (4, 8, or 12)");
-            if (sizeList.contains(length)) {
+            customerSizeChoice = ConsoleHelper.promptForInt("Choose size");
+            if (sizeList.contains(customerSizeChoice)) {
                 break;
             } else {
                 System.out.println("Invalid size. Please enter 4, 8, or 12.");
             }
         }
-
+        switch (customerSizeChoice) {
+            case 1 -> length = 4;
+            case 2 -> length = 8;
+            case 3 -> length = 12;
+            default -> length = 0;
+        };
         Sandwich sandwich = new Sandwich(bread, length, false);
 
         //Meats
-        List<String> meatList = Arrays.asList("steak", "ham", "salami", "roast beef", "chicken", "bacon");
+        List<String> meatList = Arrays.asList("1", "2", "3", "4", "5", "6");
         boolean addMeat = ConsoleHelper.promptForYesNo("Add meat?");
 
         while (addMeat) {
             String meatType;
-
+            System.out.println("Meat options:\n 1) Steak\n 2) Ham\n 3) Salami\n 4) Roast Beef\n 5) Chicken\n 6) Bacon\n");
             while (true) {
-                meatType = ConsoleHelper.promptForString("Choose meat (Steak, Ham, Salami, Roast Beef, Chicken, or Bacon)").toLowerCase().trim();
+                meatType = ConsoleHelper.promptForString("Choose meat");
                 if (meatList.contains(meatType)) {
                     break;
                 }
                 System.out.println("Invalid meat type. Please choose from the options listed.");
             }
 
-            boolean extra = ConsoleHelper.promptForYesNo("Extra meat?");
+            boolean extra = ConsoleHelper.promptForYesNo("Extra/Double meat?");
             sandwich.addTopping(new Meat(meatType, extra));
 
             addMeat = ConsoleHelper.promptForYesNo("Add another meat?");
@@ -297,7 +212,7 @@ public class MenuService {
                     System.out.println("Invalid sauce. Please choose from the options listed.");
                 }
             }
-            sandwich.addTopping(new Toppings(sauceType){});
+            sandwich.addTopping(new Sauce(sauceType));
             addSauce = ConsoleHelper.promptForYesNo("Add another sauce?");
         }
 
@@ -314,5 +229,107 @@ public class MenuService {
 
         order.addItem(sandwich);
         System.out.println("Sandwich added: " + sandwich);
+        System.out.println("🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓");
     }
+
+    private void addChips(Order order) {
+        System.out.println("""
+🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
+           🧂  CHIP STOP  🧂
+   Crunchy, crispy, and full of flavor!
+""");
+
+        List<String> chipList = Arrays.asList("bbq", "plain", "sour cream", "salt & vinegar", "cheddar");
+        String type;
+
+        while (true) {
+            type = ConsoleHelper.promptForString("Choose chip type (BBQ, Plain, Sour Cream, Salt & Vinegar, Cheddar)").toLowerCase().trim();
+            if (chipList.contains(type)) {
+                break;
+            } else {
+                System.out.println("Invalid chip type. Please choose from the options listed.");
+            }
+        }
+        Chips chips = new Chips(type);
+        order.addItem(chips);
+        System.out.println("Chips added: " + chips);
+        System.out.println("🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟");
+    }
+
+    private void addDrink(Order order) {
+        System.out.println("""
+🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
+        🥤  QUENCH YOUR THIRST  🥤
+      Time for something refreshing!
+""");
+        // Drink sizes
+        List<String> sizeList = Arrays.asList("small", "medium", "large");
+        String size;
+
+        while (true) {
+            size = ConsoleHelper.promptForString("Choose size (Small, Medium, Large)").toLowerCase().trim();
+            if (sizeList.contains(size)) {
+                break;
+            } else {
+                System.out.println("Invalid size. Please enter Small, Medium, or Large.");
+            }
+        }
+
+        List<String> flavorList = Arrays.asList("soda", "water", "juice");
+        String flavor;
+
+        while (true) {
+            flavor = ConsoleHelper.promptForString("Choose beverage (Juice, Water, or Soda)").trim().toLowerCase();
+
+            if (flavorList.contains(flavor)) {
+                break;
+            } else {
+                System.out.println("Invalid beverage. Please enter Juice, Water, or Soda.");
+            }
+        }
+
+        Drink drink = new Drink(size, flavor);
+        order.addItem(drink);
+        System.out.println("Drink added: " + drink);
+        System.out.println("🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓");
+    }
+
+    private void checkout(Order order) {
+        if (order.isEmpty()) {
+            System.out.println("Your order is empty! Please add items before checking out.");
+            return;
+        }
+
+        System.out.println("""
+🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟
+         🛒  FINAL STOP  🛒
+   Would you like to add anything else?
+""");
+        System.out.println(order.getReceiptContent());
+
+        boolean confirm = ConsoleHelper.promptForYesNo("Confirm order?");
+
+        if (confirm) {
+            saveReceiptToFileAndFolder(order);
+            System.out.println("Order confirmed! Thank you for your purchase.");
+        } else {
+            System.out.println("Order cancelled. Returning to the order menu...");
+        }
+        System.out.println("🍟━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🍟");
+    }
+
+    private void saveReceiptToFileAndFolder(Order order) {
+        try {
+            FileWriter fw = new FileWriter(order.getReceiptFileName()); // Makes the receipt text file.
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(order.getReceiptContent()); // Displays the file's context in checkout.
+            bw.close();
+
+            System.out.println("Receipt saved as: " + order.getReceiptFileName()); // Prints it into the checkout program.
+
+        } catch (IOException e) {
+            System.out.println("Error saving receipt: " + e.getMessage());
+        }
+    }
+
 }
