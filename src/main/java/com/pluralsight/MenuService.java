@@ -120,6 +120,7 @@ public class MenuService {
         int customerSizeChoice;
 
         while (true) {
+            System.out.println();
             customerSizeChoice = ConsoleHelper.promptForInt("Choose size");
             if (sizeList.contains(customerSizeChoice)) {
                 break;
@@ -137,13 +138,16 @@ public class MenuService {
 
         //Meats
         List<Integer> meatList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        System.out.println();
         boolean addMeat = ConsoleHelper.promptForYesNo("Add meat?");
 
         while (addMeat) {
             String meatType;
             int customerMeatChoice;
+            System.out.println();
             System.out.println("Meat options:\n 1) Steak\n 2) Ham\n 3) Salami\n 4) Roast Beef\n 5) Chicken\n 6) Bacon\n");
             while (true) {
+                System.out.println();
                 customerMeatChoice = ConsoleHelper.promptForInt("Choose meat");
                 if (meatList.contains(customerMeatChoice)) {
                     break;
@@ -159,14 +163,17 @@ public class MenuService {
             case 6 -> "Bacon";
             default -> "Error";
         };
+            System.out.println();
             boolean extra = ConsoleHelper.promptForYesNo("Extra/Double meat?");
             sandwich.addTopping(new Meat(meatType, extra));
 
+            System.out.println();
             addMeat = ConsoleHelper.promptForYesNo("Add another meat?");
         }
 
         // Cheeses
         List<Integer> cheeseList = Arrays.asList(1, 2, 3, 4);
+        System.out.println();
         boolean addCheese = ConsoleHelper.promptForYesNo("Add cheese?");
 
         while (addCheese) {
@@ -174,6 +181,7 @@ public class MenuService {
             int customerCheeseChoice;
 
             while (true) {
+                System.out.println();
                 System.out.println("Meat options:\n 1) American\n 2) Provolone\n 3) Cheddar\n 4) Swiss\n");
                 customerCheeseChoice = ConsoleHelper.promptForInt("Choose cheese");
                 if (cheeseList.contains(customerCheeseChoice)) {
@@ -188,22 +196,26 @@ public class MenuService {
                 case 4 -> "Swiss";
                 default -> "Error";
             };
+            System.out.println();
             boolean extra = ConsoleHelper.promptForYesNo("Extra cheese?");
             sandwich.addTopping(new Cheese(cheeseType, extra));
-
+            System.out.println();
             addCheese = ConsoleHelper.promptForYesNo("Add another cheese?");
         }
 
         // Toppings
         List<Integer> toppingsList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        System.out.println();
         boolean addRegular = ConsoleHelper.promptForYesNo("Add regular toppings?");
 
         while (addRegular) {
+            System.out.println();
             System.out.println("Regular topping options:\n1) Lettuce\n2) Peppers\n3) Onions\n4) Tomatoes\n5) Jalapeños\n6) Cucumbers\n7) Pickles\n8) Guacamole\n9) Mushrooms");
             String toppingType;
             int customerTopping;
 
             while (true) {
+                System.out.println();
                 customerTopping = ConsoleHelper.promptForInt("Choose topping");
                 if (toppingsList.contains(customerTopping)) {
                     break;
@@ -229,16 +241,19 @@ public class MenuService {
         }
 
         // Sauces
+        System.out.println();
         List<Integer> sauceList = Arrays.asList(1, 2, 3, 4, 5, 6);
         boolean addSauce = ConsoleHelper.promptForYesNo("Add sauce?");
 
         while (addSauce) {
+            System.out.println();
             System.out.println("Sauce options:\n1) Mayo\n2) Mustard\n3) Ketchup\n4) Ranch\n5) Thousand Islands\n6) Vinaigrette");
             String sauceType;
             int customerSauce;
 
             while (true) {
-                customerSauce = ConsoleHelper.promptForInt("Choose sauce (Mayo, Mustard, Ketchup, Ranch, Thousand Islands, or Vinaigrette)");
+                System.out.println();
+                customerSauce = ConsoleHelper.promptForInt("Choose sauce");
                 if (sauceList.contains(customerSauce)) {
                     break;
                 } else {
@@ -258,6 +273,7 @@ public class MenuService {
             addSauce = ConsoleHelper.promptForYesNo("Add another sauce?");
         }
         // Toasted?
+        System.out.println();
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
 
         if (toasted) {
@@ -281,7 +297,7 @@ public class MenuService {
 """);
 
         List<Integer> chipList = Arrays.asList(1, 2, 3, 4, 5);
-        String type = null;
+        String type;
         int customerChip;
 
         while (true) {
@@ -292,15 +308,15 @@ public class MenuService {
             } else {
                 System.out.println("Invalid chip type. Please choose from the options listed.");
             }
-            type = switch (customerChip) {
-                case 1 -> "BBQ";
-                case 2 -> "Plain";
-                case 3 -> "Sour Cream";
-                case 4 -> "Salt & Vinegar";
-                case 5 -> "Cheddar";
-                default -> type;
-            };
         }
+        type = switch (customerChip) {
+            case 1 -> "BBQ";
+            case 2 -> "Plain";
+            case 3 -> "Sour Cream";
+            case 4 -> "Salt & Vinegar";
+            case 5 -> "Cheddar";
+            default -> "Error";
+        };
         Chips chips = new Chips(type);
         order.addItem(chips);
         System.out.println("Chips added: " + chips);
