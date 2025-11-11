@@ -330,31 +330,52 @@ public class MenuService {
       Time for something refreshing!
 """);
         // Drink sizes
-        List<String> sizeList = Arrays.asList("small", "medium", "large");
-        String size;
 
-        while (true) {
-            size = ConsoleHelper.promptForString("Choose size (Small, Medium, Large)").toLowerCase().trim();
-            if (sizeList.contains(size)) {
-                break;
-            } else {
-                System.out.println("Invalid size. Please enter Small, Medium, or Large.");
-            }
-        }
+         List<Integer> flavorList = Arrays.asList(1,2,3,4,5);
+        System.out.println("Drink options:\n1) Soda\n2) Juice\n3) Water\n4) Chai\n5) Coffee");
 
-        List<String> flavorList = Arrays.asList("soda", "water", "juice");
         String flavor;
+        int customerDrinkFlavor;
+
+                while (true) {
+                    customerDrinkFlavor = ConsoleHelper.promptForInt("Choose drink");
+
+                    if (flavorList.contains(customerDrinkFlavor)) {
+                        break;
+                    } else {
+                        System.out.println("Invalid beverage. Please select a valid input.");
+                    }
+                }
+
+                flavor = switch (customerDrinkFlavor){
+                  case 1 -> "Soda";
+                  case 2 -> "Juice";
+                  case 3 -> "Water";
+                  case 4 -> "Chai";
+                  case 5 -> "Coffee";
+                    default -> "Error";
+                };
+
+        List<Integer> sizeList = Arrays.asList(1,2,3);
+        System.out.println();
+        System.out.println("Drink sizes:\n1) Small\n2) Medium\n3) Large");
+        String size;
+        int customerDrinkSize;
 
         while (true) {
-            flavor = ConsoleHelper.promptForString("Choose beverage (Juice, Water, or Soda)").trim().toLowerCase();
-
-            if (flavorList.contains(flavor)) {
+            customerDrinkSize = ConsoleHelper.promptForInt("Choose size");
+            if (sizeList.contains(customerDrinkSize)) {
                 break;
             } else {
-                System.out.println("Invalid beverage. Please enter Juice, Water, or Soda.");
+                System.out.println("Invalid size. Please select a valid input.");
             }
         }
-
+size = switch (customerDrinkSize){
+  case 1 -> "Small";
+  case 2 -> "Medium";
+  case 3 -> "Large";
+  default -> "Error";
+};
         Drink drink = new Drink(size, flavor);
         order.addItem(drink);
         System.out.println("Drink added: " + drink);
