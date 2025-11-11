@@ -1,16 +1,15 @@
 package com.pluralsight;
 
-public class BLT extends SignSandwich{
+public class Philly extends SignSandwich{
 
-    public BLT(){
-        super("white",8,true); // Following the format of the signSandwich (super(bread,length,toasted));
+    public Philly(){
+    super("white",8,true);
     }
 
     @Override
     protected void addSignToppings() {
         // Sets the permanent toppings for a BLT
-        addTopping(new Meat("bacon", false));
-        addTopping(new Cheese("cheddar",false));
+        addTopping(new Meat("steak", false));
         addTopping(new Toppings("lettuce") {});
         addTopping(new Toppings("tomato") {});
         addTopping(new Sauce("mayo"));
