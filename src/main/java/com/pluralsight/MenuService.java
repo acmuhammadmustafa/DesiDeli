@@ -34,7 +34,7 @@ public class MenuService {
 
                 default:
                     System.out.println("Invalid input. Please enter a valid option.");
-                    System.out.println("🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖");
+                    System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
             }
         } while (true);
     }
@@ -54,22 +54,22 @@ public class MenuService {
             switch (orderCommand) {
                 case 1:
                     addSandwich(currentOrder);
-                    System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
+                    System.out.println();
                     break;
 
                 case 2:
                     addDrink(currentOrder);
-                    System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
+                    System.out.println();
                     break;
 
                 case 3:
                     addChips(currentOrder);
-                    System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
+                    System.out.println();
                     break;
 
                 case 4:
                     checkout(currentOrder);
-                    System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
+                    System.out.println();
                     return;
 
                 case 0:
@@ -78,7 +78,7 @@ public class MenuService {
 
                 default:
                     System.out.println("Invalid input. Please enter a valid option.");
-                    System.out.println("🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯");
+                    System.out.println();
             }
         } while (true);
     }
