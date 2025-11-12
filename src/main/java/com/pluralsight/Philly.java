@@ -9,10 +9,10 @@ public class Philly extends SignSandwich{
     @Override
     protected void addSignToppings() {
         // Sets the permanent toppings for a Philly
-        addTopping(new Meat("steak", false));
-        addTopping(new Cheese("american cheese",false));
-        addTopping(new Toppings("peppers") {});
-        addTopping(new Sauce("mayo"));
+        addTopping(new Meat("Steak", false));
+        addTopping(new Cheese("American cheese",false));
+        addTopping(new Toppings("Peppers") {});
+        addTopping(new Sauce("Mayo"));
     }
 
     @Override

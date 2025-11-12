@@ -1,24 +1,25 @@
 package com.pluralsight;
 
-public class BLT extends SignSandwich{
-
-    public BLT(){
-        super("white",8,true); // Following the format of the signSandwich (super(bread,length,toasted));
+public class ChickenWrap extends SignSandwich{
+    public ChickenWrap(){
+        super("wrap",8,true); // Following the format of the signSandwich (super(bread,length,toasted));
     }
 
     @Override
     protected void addSignToppings() {
         // Sets the permanent toppings for a BLT
-        addTopping(new Meat("Bacon", false));
+        addTopping(new Meat("Chicken", false));
         addTopping(new Cheese("Cheddar",false));
         addTopping(new Toppings("Lettuce") {});
         addTopping(new Toppings("Tomatoes") {});
+        addTopping(new Toppings("Peppers") {});
+        addTopping(new Toppings("Onions") {});
         addTopping(new Sauce("Mayo"));
     }
 
     @Override
     public String getSignName() {
-        return "BLT";
+        return "Chicken Wrap";
     }
 
     @Override

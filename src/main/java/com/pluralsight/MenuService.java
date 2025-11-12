@@ -79,8 +79,6 @@ public class MenuService {
                     System.out.println();
                     return;
 
-
-
                 case 0:
                     System.out.println("Order cancelled! Returning to home menu...");
                     return;
@@ -92,8 +90,6 @@ public class MenuService {
         } while (true);
     }
 
-
-
     private void addSandwich(Order order) {
         System.out.println("""
   ╒══════════════════════════════════════════════╕
@@ -102,23 +98,26 @@ public class MenuService {
   ╘══════════════════════════════════════════════╛
 """);
         // Bread Type
-        List<Integer> breadList = Arrays.asList(1,2,3,4);
+        List<Integer> breadList = Arrays.asList(1,2,3,4,0);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         System.out.println();
-        System.out.println("Bread list:\n 1) White\n 2) Wheat\n 3) Rye\n 4) Wrap\n");
-        String bread;
+        System.out.println("Bread list:\n 1) White\n 2) Wheat\n 3) Rye\n 4) Wrap\n 0) Back to Order Menu");
         int customerBreadChoice;
 
         while (true) {
             customerBreadChoice = ConsoleHelper.promptForInt("Choose bread");
-
             if (breadList.contains(customerBreadChoice)) {
+                if (customerBreadChoice == 0) {
+                    System.out.println("Returning to Order Menu...");
+                    System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+                    return;
+                }
                 break;
             } else {
-                System.out.println("Invalid bread type. Please choose from the options listed.");
+                System.out.println("Invalid chip type. Please choose from the options listed.");
             }
         }
-        bread = switch (customerBreadChoice) {
+       String bread = switch (customerBreadChoice) {
             case 1 -> "White";
             case 2 -> "Wheat";
             case 3 -> "Rye";
@@ -355,8 +354,8 @@ public class MenuService {
 """);
         // Drink sizes
 
-         List<Integer> flavorList = Arrays.asList(1,2,3,4,5);
-        System.out.println("Drink options:\n1) Soda\n2) Juice\n3) Water\n4) Chai\n5) Coffee");
+         List<Integer> flavorList = Arrays.asList(1,2,3,4,5,0);
+        System.out.println("Drink options:\n1) Soda\n2) Juice\n3) Water\n4) Chai\n5) Coffee\n0) Return to Order Menu");
 
         String flavor;
         int customerDrinkFlavor;
@@ -365,9 +364,14 @@ public class MenuService {
                     customerDrinkFlavor = ConsoleHelper.promptForInt("Choose drink");
 
                     if (flavorList.contains(customerDrinkFlavor)) {
+                        if (customerDrinkFlavor == 0) {
+                            System.out.println("Returning to Order Menu...");
+                            System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+                            return;
+                        }
                         break;
                     } else {
-                        System.out.println("Invalid beverage. Please select a valid input.");
+                        System.out.println("Invalid drink flavor. Please choose from the options listed.");
                     }
                 }
 
@@ -408,40 +412,45 @@ size = switch (customerDrinkSize){
     }
 
     private void addSignatureSandwich(Order order) {
-//        System.out.println("""
-//    ╒═════════════════════════════════════════╕
-//             🧂  SIGNATURE SANDWICH  🧂
-//        Crunchy, crispy, and full of flavor!
-//    ╘═════════════════════════════════════════╛
-//""");
-//
-//        List<Integer> signList = Arrays.asList(1, 2, 3, 4, 5);
-//        String sand;
-//        int customerSand;
-//        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-//
-//        while (true) {
-//            System.out.println("1) BLT\n2) Philly\n3) Placeholder\n4) Placeholder\n5) Placeholder");
-//            customerSand = ConsoleHelper.promptForInt("Choose signature sandwich");
-//            if (signList.contains(customerSand)) {
-//                break;
-//            } else {
-//                System.out.println("Invalid chip type. Please choose from the options listed.");
-//            }
-//        }
-//        sand = switch (customerSand) {
-//            case 1 -> "BLT";
-//            case 2 -> "Philly";
-//            case 3 -> "Sour Cream";
-//            case 4 -> "Salt & Vinegar";
-//            case 5 -> "Cheddar";
-//            default -> "Error";
-//        };
-//        SignSandwich signSandwich = new SignSandwich(sand) {
-//        };
-//        order.addItem(SignSandwich);
-//        System.out.println("Signature sandwich added: " + signSandwich);
-//        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        System.out.println("""
+    ╒══════════════════════════════════════════╕
+             🌟  SIGNATURE SANDWICH  🌟
+       Handcrafted favorites, full of flavor!
+    ╘══════════════════════════════════════════╛
+""");
+
+        List<Integer> signList = Arrays.asList(1, 2, 3, 4, 5,0);
+
+        int customerSand;
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+
+        while (true) {
+            System.out.println("1) BLT\n2) Philly\n3) Roast Beef\n4) Chicken Wrap\n5) Grilled Ham\n0) Return to Order Menu");
+            customerSand = ConsoleHelper.promptForInt("Choose signature sandwich");
+            if (signList.contains(customerSand)) {
+                if (customerSand == 0) {
+                    System.out.println("Returning to Order Menu...");
+                    System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+                    return;
+                }
+                break;
+            } else {
+                System.out.println("Invalid choice. Please choose from the options listed.");
+            }
+        }
+        SignSandwich sand = switch (customerSand) {
+            case 1 -> new BLT();
+            case 2 -> new Philly();
+            case 3 -> new RoastBeef();
+            case 4 -> new ChickenWrap();
+            case 5 -> new GrilledHam();
+            default -> null;
+        };
+        order.addItem(sand);
+        if (sand != null){
+        System.out.println("Signature sandwich added: " + sand.getSignName());
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        }
     }
 
     private void checkout(Order order) {
@@ -460,11 +469,13 @@ size = switch (customerDrinkSize){
 
         boolean confirm = ConsoleHelper.promptForYesNo("Confirm order?");
 
-        if (confirm) {
+        if (!confirm) {
+            System.out.println("Order cancelled. Returning to the order menu...");
+            System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+            return;
+        } else {
             saveReceiptToFileAndFolder(order);
             System.out.println("Order confirmed! Thank you for your purchase.");
-        } else {
-            System.out.println("Order cancelled. Returning to the order menu...");
         }
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
     }
