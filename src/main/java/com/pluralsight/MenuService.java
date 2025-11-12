@@ -7,25 +7,26 @@ public class MenuService {
 
     public void displayHomeScreen() {
         System.out.println("""
-🥪━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥪
-             WELCOME TO THE DESI DELI
-🥪━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥪
+╒═════════════════════════════════════════════════════╕
+          🥪  WELCOME TO THE DESI DELI 🥪
+╘═════════════════════════════════════════════════════╛
 """);
         System.out.println();
         int command;
         do {
         // Home Menu:
             System.out.println("""
-🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖
-                       HOME MENU
+              ╒═════════════════════════╕
+                    🥖 HOME MENU 🥖
+              ╘═════════════════════════╛
 """);
-            String homeMenu = "What would you like to do?\n 1) New Order\n 0) Exit\n🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖\n";
+            String homeMenu = "What would you like to do?\n 1) New Order\n 0) Exit\n『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』\n";
             System.out.println(homeMenu);
             command = ConsoleHelper.promptForInt("Enter your command");
             switch (command) {
                 case 1:
                     orderScreen();
-                    System.out.println("🥖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🥖");
+                    System.out.println();
                     break;
 
                 case 0:
@@ -34,7 +35,7 @@ public class MenuService {
 
                 default:
                     System.out.println("Invalid input. Please enter a valid option.");
-                    System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                    System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
             }
         } while (true);
     }
@@ -45,10 +46,11 @@ public class MenuService {
         do {
             System.out.println();
             System.out.println("""
-🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯
-                       ORDER MENU
+               ╒═══════════════════════════╕
+                      🌯ORDER MENU 🌯
+               ╘═══════════════════════════╛
 """);
-            String orderMenu = "What would you like to order?\n 1) Add Sandwich\n 2) Add Drink\n 3) Add Chips\n 4) Checkout\n 0) Cancel Order\n🌯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🌯\n";
+            String orderMenu = "What would you like to order?\n 1) Add Sandwich\n 2) Add Drink\n 3) Add Chips\n 4) Checkout\n 0) Cancel Order\n『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』\n";
             System.out.println(orderMenu);
             orderCommand = ConsoleHelper.promptForInt("Enter your command");
             switch (orderCommand) {
@@ -85,12 +87,15 @@ public class MenuService {
 
     private void addSandwich(Order order) {
         System.out.println("""
-🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓
-      🌯  DESI SANDWICH BUILDER  🌯
-   Let's make a sandwich worthy of your hunger!
+  ╒══════════════════════════════════════════════╕
+          🌯  DESI SANDWICH BUILDER  🌯
+    Let's make a sandwich worthy of your hunger!
+  ╘══════════════════════════════════════════════╛
 """);
-        // Breads
+        // Bread Type
         List<Integer> breadList = Arrays.asList(1,2,3,4);
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        System.out.println();
         System.out.println("Bread list:\n 1) White\n 2) Wheat\n 3) Rye\n 4) Wrap\n");
         String bread;
         int customerBreadChoice;
@@ -115,12 +120,13 @@ public class MenuService {
 
         // Bread Sizes
         List<Integer> sizeList = Arrays.asList(1, 2, 3);
-        System.out.println("Bread sizes (in inches):\n1) 4 inches\n2) 8 inches\n3) 12 inches");
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        System.out.println();
+        System.out.println("Bread sizes (in inches):\n1) 4 inches\n2) 8 inches\n3) 12 inches\n");
         int length;
         int customerSizeChoice;
 
         while (true) {
-            System.out.println();
             customerSizeChoice = ConsoleHelper.promptForInt("Choose size");
             if (sizeList.contains(customerSizeChoice)) {
                 break;
@@ -138,16 +144,16 @@ public class MenuService {
 
         //Meats
         List<Integer> meatList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         System.out.println();
         boolean addMeat = ConsoleHelper.promptForYesNo("Add meat?");
 
         while (addMeat) {
+            System.out.println();
             String meatType;
             int customerMeatChoice;
-            System.out.println();
             System.out.println("Meat options:\n 1) Steak\n 2) Ham\n 3) Salami\n 4) Roast Beef\n 5) Chicken\n 6) Bacon\n");
             while (true) {
-                System.out.println();
                 customerMeatChoice = ConsoleHelper.promptForInt("Choose meat");
                 if (meatList.contains(customerMeatChoice)) {
                     break;
@@ -173,6 +179,7 @@ public class MenuService {
 
         // Cheeses
         List<Integer> cheeseList = Arrays.asList(1, 2, 3, 4);
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         System.out.println();
         boolean addCheese = ConsoleHelper.promptForYesNo("Add cheese?");
 
@@ -182,7 +189,7 @@ public class MenuService {
 
             while (true) {
                 System.out.println();
-                System.out.println("Meat options:\n 1) American\n 2) Provolone\n 3) Cheddar\n 4) Swiss\n");
+                System.out.println("Cheese options:\n 1) American\n 2) Provolone\n 3) Cheddar\n 4) Swiss\n");
                 customerCheeseChoice = ConsoleHelper.promptForInt("Choose cheese");
                 if (cheeseList.contains(customerCheeseChoice)) {
                     break;
@@ -205,12 +212,12 @@ public class MenuService {
 
         // Toppings
         List<Integer> toppingsList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         System.out.println();
         boolean addRegular = ConsoleHelper.promptForYesNo("Add regular toppings?");
 
         while (addRegular) {
-            System.out.println();
-            System.out.println("Regular topping options:\n1) Lettuce\n2) Peppers\n3) Onions\n4) Tomatoes\n5) Jalapeños\n6) Cucumbers\n7) Pickles\n8) Guacamole\n9) Mushrooms");
+            System.out.println("Regular topping options:\n1) Lettuce\n2) Peppers\n3) Onions\n4) Tomatoes\n5) Jalapeños\n6) Cucumbers\n7) Pickles\n8) Guacamole\n9) Mushrooms\n");
             String toppingType;
             int customerTopping;
 
@@ -241,13 +248,13 @@ public class MenuService {
         }
 
         // Sauces
-        System.out.println();
         List<Integer> sauceList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        System.out.println();
         boolean addSauce = ConsoleHelper.promptForYesNo("Add sauce?");
 
         while (addSauce) {
-            System.out.println();
-            System.out.println("Sauce options:\n1) Mayo\n2) Mustard\n3) Ketchup\n4) Ranch\n5) Thousand Islands\n6) Vinaigrette");
+            System.out.println("Sauce options:\n1) Mayo\n2) Mustard\n3) Ketchup\n4) Ranch\n5) Thousand Islands\n6) Vinaigrette\n");
             String sauceType;
             int customerSauce;
 
@@ -273,6 +280,7 @@ public class MenuService {
             addSauce = ConsoleHelper.promptForYesNo("Add another sauce?");
         }
         // Toasted?
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         System.out.println();
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
 
@@ -286,7 +294,7 @@ public class MenuService {
 
         order.addItem(sandwich);
         System.out.println("Sandwich added: " + sandwich);
-        System.out.println("🫓━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🫓");
+        System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
     }
 
     private void addChips(Order order) {
