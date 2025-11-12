@@ -75,9 +75,15 @@ public class MenuService {
                     break;
 
                 case 5:
-                    checkout(currentOrder);
-                    System.out.println();
-                    return;
+                    if(checkout(currentOrder)){
+                        System.out.println();
+                        return;
+                    }
+                    else{
+                        System.out.println();
+                        break;
+                    }
+
 
                 case 0:
                     System.out.println("Order cancelled! Returning to home menu...");
@@ -293,6 +299,7 @@ public class MenuService {
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
 
         if (toasted) {
+            //sandwich.setToasted();
             Sandwich toastedSandwich = new Sandwich(bread, length, true);
             for (Toppings t : sandwich.getToppings()) {
                 toastedSandwich.addTopping(t);
@@ -345,7 +352,7 @@ public class MenuService {
         order.addItem(chips);
         System.out.println("Chips added: " + chips);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-    } // Error with options
+    }
 
     private void addDrink(Order order) {
         System.out.println("""
@@ -427,7 +434,7 @@ size = switch (customerDrinkSize){
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
 
         while (true) {
-            System.out.println("1) BLT\n2) Philly\n3) Roast Beef\n4) Chicken Wrap\n5) Grilled Ham\n0) Return to Order Menu");
+            System.out.println("1) BLT (8 Inch Toasted White bread, Bacon, Cheddar, Lettuce, Tomatoes, and Mayo) for $10.50\n2) Philly (8 Inch Toasted White bread, Steak, American, Peppers, and Mayo) for $10.50\n3) Roast Beef (8 Inch White Toasted bread, Roast beef, Provolone, Lettuce, Onions, Tomatoes, and Mayo) for $10.50\n4) Chicken Wrap (8 Inch Toasted Wrap, Chicken, Cheddar, Lettuce, Tomatoes, peppers, Onions and Mayo) for $10.50\n5) Grilled Ham (8 Inch Toasted Rye bread, Ham, Swiss, Pickles, Tomatoes, and Mayo) for $10.50\n0) Return to Order Menu");
             customerSand = ConsoleHelper.promptForInt("Choose signature sandwich");
             if (signList.contains(customerSand)) {
                 if (customerSand == 0) {
@@ -455,10 +462,10 @@ size = switch (customerDrinkSize){
         }
     }
 
-    private void checkout(Order order) {
+    private boolean checkout(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your order is empty! Please add items before checking out.");
-            return;
+            return false;
         }
 
         System.out.println("""
@@ -472,14 +479,15 @@ size = switch (customerDrinkSize){
         boolean confirm = ConsoleHelper.promptForYesNo("Confirm order?");
 
         if (!confirm) {
-            System.out.println("Order cancelled. Returning to the order menu...");
+            System.out.println("Checkout cancelled. Returning to the order menu...");
             System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-            return;
+            return false;
         } else {
             saveReceiptToFileAndFolder(order);
             System.out.println("Order confirmed! Thank you for your purchase.");
         }
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+        return true;
     } // Maybe make a checkout class?
 
     private void saveReceiptToFileAndFolder(Order order) {

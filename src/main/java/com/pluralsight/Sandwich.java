@@ -16,6 +16,14 @@ public class Sandwich extends OrderItem{
         this.toppings = new ArrayList<>();
     }
 
+    public boolean isToasted() {
+        return toasted;
+    }
+
+    public void setToasted(boolean toasted) {
+        this.toasted = toasted;
+    }
+
     public void addTopping(Toppings topping) {
         toppings.add(topping);
     }
@@ -40,18 +48,18 @@ public class Sandwich extends OrderItem{
 
     @Override
     public String toString() {
-        String toppingsList = "";
+        String toppingsList = ""; // Starts from here onward and checks for toppings.
         if (!toppings.isEmpty()) {
-            toppingsList = " | Toppings: ";
+            toppingsList = " | Toppings: "; // Where list begins being built.
             for (int i = 0; i < toppings.size(); i++) {
                 toppingsList += toppings.get(i);
                 if (i < toppings.size() - 1) {
-                    toppingsList += ", ";
+                    toppingsList += ", "; // Loops through and adds comma's for every topping passed.
                 }
             }
         }
 
-        return length + "\" | " + bread + " bread" +
+        return length + "\" | " + bread + " bread" + // Starts here and is building the ACTUAL sandwich (bread, length, etc.)
                 (toasted ? " | Toasted" : "") +
                 toppingsList +
                 String.format(" | $%.2f", getPrice());
