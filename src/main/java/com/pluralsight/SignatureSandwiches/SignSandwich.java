@@ -1,4 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.SignatureSandwiches;
+
+import com.pluralsight.Orders.Sandwich;
 
 public abstract class SignSandwich extends Sandwich {
 

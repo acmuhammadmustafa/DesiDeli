@@ -3,7 +3,7 @@ Date: 2025-11-07 14:34:02
 
 
 Drinks:
-  - com.pluralsight.Drink@2ef1e4fa
+  - com.pluralsight.Orders.Drink@2ef1e4fa
 
 Total: $0.00
 ==============================

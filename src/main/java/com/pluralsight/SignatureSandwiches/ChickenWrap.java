@@ -1,4 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.SignatureSandwiches;
+
+import com.pluralsight.ToppingsPackage.*;
 
 public class ChickenWrap extends SignSandwich{
     public ChickenWrap(){

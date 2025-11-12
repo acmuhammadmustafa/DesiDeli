@@ -1,4 +1,9 @@
-package com.pluralsight;
+package com.pluralsight.SignatureSandwiches;
+
+import com.pluralsight.ToppingsPackage.Cheese;
+import com.pluralsight.ToppingsPackage.Meat;
+import com.pluralsight.ToppingsPackage.Sauce;
+import com.pluralsight.ToppingsPackage.Toppings;
 
 public class GrilledHam extends SignSandwich{
     public GrilledHam(){

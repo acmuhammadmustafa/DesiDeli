@@ -1,6 +1,4 @@
-package com.pluralsight;
-
-import java.awt.*;
+package com.pluralsight.MainAndHelpers;
 
 public class Main {
     public static void main(String[] args) {

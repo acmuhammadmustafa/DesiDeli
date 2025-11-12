@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.Orders;
 
 public class Drink extends OrderItem {
     private String size;

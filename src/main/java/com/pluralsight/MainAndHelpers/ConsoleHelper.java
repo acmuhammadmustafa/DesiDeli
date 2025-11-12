@@ -1,8 +1,7 @@
 // Grabbed ConsoleHelper from previous projects:
-package com.pluralsight;
-
-import java.time.LocalDate;
-import java.util.Scanner;
+package com.pluralsight.MainAndHelpers;
+import java.time.*;
+import java.util.*;
 
 public class ConsoleHelper {
 
@@ -73,6 +72,22 @@ public class ConsoleHelper {
             } else {
                 System.out.println("Invalid input. Please enter Y or N.");
             }
+        }
+    }
+
+    public static String promptForHelperMenu(String title, List<String> options, boolean allowCancel) { // Examples: title = "Choose your bread" | options = "List like [1,2,3] or [apple, banana, pears] | allowCancel = the cancel/return option.
+        System.out.println("\n" + title); // Displays the title but creates a blank line before.
+        for (int i = 0; i < options.size(); i++)
+            System.out.printf("%d) %s%n", i + 1, options.get(i));// Prints each option (%d = integer | %s = string | %n = new line) i+1 = index starts at 0 but +1 because menu starts at option 1
+        if (allowCancel) System.out.println("0) Cancel/Return");
+
+        while (true) { // While true = keeps asking till valid option is given.
+            int choice = promptForInt("Enter your choice");
+            if (allowCancel && choice == 0)
+                return null; // Exits the method.
+            if (choice >= 1 && choice <= options.size())
+                return options.get(choice - 1); // Returns the actual chosen item
+            System.out.println("Invalid choice. Try again.");
         }
     }
 

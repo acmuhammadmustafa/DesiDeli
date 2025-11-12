@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.ToppingsPackage;
 
 public class Meat extends Toppings{
     private boolean extra;
