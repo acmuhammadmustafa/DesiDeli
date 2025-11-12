@@ -10,7 +10,6 @@ public class ConsoleHelper {
 
     public static String promptForString(String prompt) {
         System.out.print(prompt + ": ");
-        System.out.println();
         return scanner.nextLine();
     }
 
@@ -77,15 +76,4 @@ public class ConsoleHelper {
         }
     }
 
-//    public static char promptForChar(char prompt){
-//        while (true) {
-//            System.out.print(prompt + ": ");
-//            String input = scanner.nextLine();
-//            try {
-//                return Character(input);
-//            } catch (NumberFormatException e) {
-//                System.out.println("Invalid input. Please enter a number.");
-//            }
-//        }
-//    }
 }

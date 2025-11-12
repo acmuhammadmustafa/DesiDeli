@@ -50,7 +50,7 @@ public class MenuService {
                       🌯ORDER MENU 🌯
                ╘═══════════════════════════╛
 """);
-            String orderMenu = "What would you like to order?\n 1) Add Sandwich\n 2) Add Drink\n 3) Add Chips\n 4) Add Signature Sandwich\n 5) Checkout\n 0) Cancel Order\n『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』\n";
+            String orderMenu = "What would you like to order?\n 1) Add Sandwich\n 2) Add Drink\n 3) Add Chips\n 4) Add Signature Sandwich\n 5) Edit Sandwich\n 6) Checkout\n 0) Cancel Order\n『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』\n";
             System.out.println(orderMenu);
             orderCommand = ConsoleHelper.promptForInt("Enter your command");
             switch (orderCommand) {
@@ -75,6 +75,11 @@ public class MenuService {
                     break;
 
                 case 5:
+                    editSandwich();
+                    System.out.println();
+                    break;
+
+                case 6:
                     if(checkout(currentOrder)){
                         System.out.println();
                         return;
@@ -84,7 +89,6 @@ public class MenuService {
                         break;
                     }
 
-
                 case 0:
                     System.out.println("Order cancelled! Returning to home menu...");
                     return;
@@ -93,6 +97,7 @@ public class MenuService {
                     System.out.println("Invalid input. Please enter a valid option.");
                     System.out.println();
             }
+
         } while (true);
     }
 
@@ -191,6 +196,10 @@ public class MenuService {
             addMeat = ConsoleHelper.promptForYesNo("Add another meat?");
         }
 
+
+        // Helper Method
+
+
         // Cheeses
         List<Integer> cheeseList = Arrays.asList(1, 2, 3, 4);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
@@ -232,7 +241,6 @@ public class MenuService {
 
         while (addRegular) {
             System.out.println("Regular topping options:\n1) Lettuce\n2) Peppers\n3) Onions\n4) Tomatoes\n5) Jalapeños\n6) Cucumbers\n7) Pickles\n8) Guacamole\n9) Mushrooms\n");
-            String toppingType;
             int customerTopping;
 
             while (true) {
@@ -244,7 +252,7 @@ public class MenuService {
                     System.out.println("Invalid topping. Please choose from the options listed.");
                 }
             }
-            toppingType = switch (customerBreadChoice) {
+            String toppingType = switch (customerTopping) {
                 case 1 -> "Lettuce";
                 case 2 -> "Peppers";
                 case 3 -> "Onions";
@@ -256,8 +264,7 @@ public class MenuService {
                 case 9 -> "Mushrooms";
                 default -> "Error";
             };
-            sandwich.addTopping(new Toppings(toppingType) {
-            });
+            sandwich.addTopping(new Toppings(toppingType) {});
             addRegular = ConsoleHelper.promptForYesNo("Add another topping?");
         }
 
@@ -324,7 +331,7 @@ public class MenuService {
         int customerChip;
 
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-
+        System.out.println("All chips are $1.50!");
         while (true) {
             System.out.println("1) BBQ\n2) Plain\n3) Sour Cream\n4) Salt & Vinegar\n5) Cheddar\n0) Return to Order Menu");
             customerChip = ConsoleHelper.promptForInt("Choose chip type");
@@ -396,8 +403,7 @@ public class MenuService {
         List<Integer> sizeList = Arrays.asList(1,2,3);
         System.out.println();
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-        System.out.println("Drink sizes:\n1) Small\n2) Medium\n3) Large");
-        String size;
+        System.out.println("Drink sizes:\n1) Small for $2.00\n2) Medium for $2.50\n3) Large for $3.00");
         int customerDrinkSize;
 
         while (true) {
@@ -408,7 +414,7 @@ public class MenuService {
                 System.out.println("Invalid size. Please select a valid input.");
             }
         }
-size = switch (customerDrinkSize){
+String size = switch (customerDrinkSize){
   case 1 -> "Small";
   case 2 -> "Medium";
   case 3 -> "Large";
@@ -462,6 +468,15 @@ size = switch (customerDrinkSize){
         }
     }
 
+    private void editSandwich() {
+        System.out.println("""
+           ╒════════════════════════╕
+             🎨  EDIT SANDWICH  🎨
+           ╘════════════════════════╛
+""");
+
+    }
+
     private boolean checkout(Order order) {
         if (order.isEmpty()) {
             System.out.println("Your order is empty! Please add items before checking out.");
@@ -488,7 +503,7 @@ size = switch (customerDrinkSize){
         }
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
         return true;
-    } // Maybe make a checkout class?
+    }
 
     private void saveReceiptToFileAndFolder(Order order) {
         try {
