@@ -315,22 +315,24 @@ public class MenuService {
 
         List<Integer> chipList = Arrays.asList(1, 2, 3, 4, 5,0);
         int customerChip;
+
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
 
         while (true) {
             System.out.println("1) BBQ\n2) Plain\n3) Sour Cream\n4) Salt & Vinegar\n5) Cheddar\n0) Return to Order Menu");
             customerChip = ConsoleHelper.promptForInt("Choose chip type");
-        if (chipList.contains(customerChip)) {
-            if (customerChip == 0) {
-                System.out.println("Returning to Order Menu...");
-                System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-                return;
+            if (chipList.contains(customerChip)) {
+                if (customerChip == 0) {
+                    System.out.println("Returning to Order Menu...");
+                    System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+                    return;
+                }
+                break;
+            } else {
+                System.out.println("Invalid chip type. Please choose from the options listed.");
+                System.out.println();
             }
-            break;
-        } else {
-            System.out.println("Invalid chip type. Please choose from the options listed.");
         }
-
         String type = switch (customerChip) {
             case 1 -> "BBQ";
             case 2 -> "Plain";
@@ -343,7 +345,7 @@ public class MenuService {
         order.addItem(chips);
         System.out.println("Chips added: " + chips);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-    }}
+    } // Error with options
 
     private void addDrink(Order order) {
         System.out.println("""
@@ -478,7 +480,7 @@ size = switch (customerDrinkSize){
             System.out.println("Order confirmed! Thank you for your purchase.");
         }
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-    }
+    } // Maybe make a checkout class?
 
     private void saveReceiptToFileAndFolder(Order order) {
         try {

@@ -79,10 +79,6 @@ public class Order {
         return receiptFileName;
     }
 
-    public List<OrderItem> getItems() {
-        return items;
-    }
-
     public boolean isEmpty() {
         return items.isEmpty();
     }

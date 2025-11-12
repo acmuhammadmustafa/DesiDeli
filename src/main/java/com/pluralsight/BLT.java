@@ -23,7 +23,7 @@ public class BLT extends SignSandwich{
 
     @Override
     public String toString() {
-        return getSignName() + " | " + super.toString();
+        return getSignName() + " | " + super.toString(); // super.toString = BLT | 8" | white bread | Toasted | Toppings: bacon, lettuce, tomato, mayo | $7.50" and super.getSignName = "BLT"
     }
 
 }
