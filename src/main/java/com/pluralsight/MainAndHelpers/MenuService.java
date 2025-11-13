@@ -233,16 +233,29 @@ public class MenuService {
     private void editSandwich(Order order) {
         System.out.println("""
            ╒════════════════════════╕
-              🎨  EDIT ORDER!  🎨
+             🎨  EDIT SANDWICH!  🎨
            ╘════════════════════════╛
 """);
+        // Go through the order to get sandwiches only:
+        List<Sandwich> sandwiches = order.getItems().stream().filter(item -> item instanceof Sandwich).map(item -> (Sandwich) item).toList();
 
-        List<OrderItem> items = order.getItems();
+        // If there aren't any sandwiches, you get sent back to the order menu:
+        if (sandwiches.isEmpty()){
+            System.out.println("No sandwiches to edit in this order.");
+            System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+            return;
+        }
+
+        // Making a displayable list for the helper menu:
+        List<String> sandwichOptions = new ArrayList<>();
+        
+
+
 //        for (OrderItem OI : order.getItems()){
 //            System.out.println(OI);
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println((i+1) + ") " + items.get(i));
-        }
+//        for (int i = 0; i < items.size(); i++) {
+//            System.out.println((i+1) + ") " + items.get(i));
+//        }
     }
 
     private boolean checkout(Order order) {
