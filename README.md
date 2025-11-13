@@ -68,3 +68,13 @@ FileWriter/BufferedWriter:
 <img width="1045" height="284" alt="image" src="https://github.com/user-attachments/assets/bb8d3cc7-f2aa-4d8e-9f93-53218d45a5fe" />
 
 I was able to use FileWriter in a new way! I learned that due to the parameters of the saveReceiptToFileAndFolder containing the Order class, I am able to use the methods within the class, in which case, I was able to use "order.getReceiptFileName()" and "order.getReceiptContent()".
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Program being ran:
+
+<img width="449" height="345" alt="image" src="https://github.com/user-attachments/assets/e947575d-989b-4ba6-a44c-9561e2ce1546" />
+
+<img width="450" height="350" alt="image" src="https://github.com/user-attachments/assets/50892e91-58d3-4218-b4ff-33df2f4038e1" />
+
+<img width="995" height="417" alt="image" src="https://github.com/user-attachments/assets/286b0c55-f322-4e5f-9341-4c34433d49dd" />
