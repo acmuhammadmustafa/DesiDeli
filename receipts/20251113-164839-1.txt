@@ -1,0 +1,12 @@
+📝━━━━━━━━━━━━━━━━━━━━━━━DESI DELI━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝
+Date: 2025-11-13 16:48:39
+
+Sandwiches:
+  - 8" | Rye bread | Toasted | Toppings: Chicken, Cheddar, Lettuce, Onions, Tomatoes, Cucumbers, Pickles, | Sauce: Ranch, | Sauce: Vinaigrette | $10.50
+Drinks:
+  - Medium Soda | $2.50
+Chips:
+  - Sour Cream Chips | $1.50
+
+Total: $14.50
+📝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝
