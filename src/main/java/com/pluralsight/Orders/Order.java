@@ -37,7 +37,7 @@ public class Order {
     }
 
     public String getReceiptContent() {
-        StringBuilder receipt = new StringBuilder("\uD83D\uDCDD━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\uD83D\uDCDD\n");
+        StringBuilder receipt = new StringBuilder("\uD83D\uDCDD━━━━━━━━━━━━━━━━━━━━━━━DESI DELI━━━━━━━━━━━━━━━━━━━━━━━━━━━━\uD83D\uDCDD\n");
         receipt.append("Date: ").append(orderTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n\n");
 
         // Separate items by type for display

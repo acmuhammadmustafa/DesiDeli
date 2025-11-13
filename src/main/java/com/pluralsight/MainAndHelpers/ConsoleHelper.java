@@ -90,7 +90,7 @@ public class ConsoleHelper {
             if (choice >= 1 && choice <= options.size()) {
                 return options.get(choice - 1); // Returns the actual chosen item (as a string) "choice - 1" so that choice and option list are matched. (choice -1 = 0 where options[0])
             }
-                System.out.println("Invalid choice. Try again."); // Already exited the loop, therefore, no else statement needed.
+            System.out.println("Invalid choice. Try again."); // Already exited the loop, therefore, no else statement needed.
         }
     }
 }

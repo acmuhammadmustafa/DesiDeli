@@ -1,0 +1,12 @@
+📝━━━━━━━━━━━━━━━━━━━━━━━DESI DELI━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝
+Date: 2025-11-13 15:25:53
+
+Sandwiches:
+  - 4" | White bread | Toasted | Toppings: Chicken (extra), American (extra), Lettuce, | Sauce: Mustard, | Sauce: Ketchup | $8.05
+Drinks:
+  - Large Dirty Chai | $3.00
+Chips:
+  - Plain Chips | $1.50
+
+Total: $12.55
+📝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝

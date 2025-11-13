@@ -275,7 +275,7 @@ public class MenuService {
         // Editing menu:
         boolean editSandwich = true;
         while (editSandwich) {
-            String choice = ConsoleHelper.promptForHelperMenu("Editing: " + selected + "\nWhat would you like to do?", List.of("Change bread", "Change size", "Toggle toasted", "Add topping", "Remove topping", "Return to previous menu"), false);
+            String choice = ConsoleHelper.promptForHelperMenu("Editing: " + selected + "\nWhat would you like to do?", List.of("Change bread", "Change size", "Toggle toasted", "Add topping", "Remove topping"), true);
 
             switch (choice) {
                 case "Change bread" -> {
@@ -331,10 +331,7 @@ public class MenuService {
                         }
                     }
                 }
-
-                case "Return to editing menu" -> editSandwich = false; // Basically closes out the editing.
-
-                case null -> {} // Didn't want any error signs so just added this.
+                case null -> editSandwich = false; // Basically closes out the editing.
                 default -> System.out.println("Invalid choice. Please select a valid option.");
             }
         }
