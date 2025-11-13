@@ -122,10 +122,9 @@ public class MenuService {
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
         Sandwich sandwich = new Sandwich(bread, length, toasted);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
-
         // Add meats
         while (ConsoleHelper.promptForYesNo("Add meat?")) {
-            String meatType = ConsoleHelper.promptForHelperMenu("Choose meat:", List.of("Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"), true);
+            String meatType = ConsoleHelper.promptForHelperMenu("Choose meat:" , List.of("Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"), true);
             if (meatType == null)
                 break;
             boolean extra = ConsoleHelper.promptForYesNo("Extra meat?");
@@ -234,10 +233,16 @@ public class MenuService {
     private void editSandwich(Order order) {
         System.out.println("""
            ╒════════════════════════╕
-             🎨  EDIT SANDWICH  🎨
+              🎨  EDIT ORDER!  🎨
            ╘════════════════════════╛
 """);
 
+        List<OrderItem> items = order.getItems();
+//        for (OrderItem OI : order.getItems()){
+//            System.out.println(OI);
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println((i+1) + ") " + items.get(i));
+        }
     }
 
     private boolean checkout(Order order) {

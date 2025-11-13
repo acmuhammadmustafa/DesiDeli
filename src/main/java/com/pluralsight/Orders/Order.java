@@ -23,6 +23,10 @@ public class Order {
         this.items.add((orderItem));
     }
 
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
     public double calculateTotal() {
         double total = 0; // Total starts at 0 and adds as goes:
 
@@ -82,5 +86,7 @@ public class Order {
     public boolean isEmpty() {
         return items.isEmpty();
     }
+
+
 
 }

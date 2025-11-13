@@ -6,25 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9052f026-f71a-4965-82a5-c6c75b0e60c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20251107-143402-1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20251107-143402-1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/BLT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/BLT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Cheese.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/ToppingsPackage/Cheese.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/ChickenWrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/ChickenWrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Chips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Chips.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/ConsoleHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/ConsoleHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/GrilledHam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/GrilledHam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Meat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/ToppingsPackage/Meat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Philly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/Philly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/RoastBeef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/RoastBeef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Sandwich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Sandwich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Sauce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/ToppingsPackage/Sauce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignSandwich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/SignatureSandwiches/SignSandwich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Toppings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/ToppingsPackage/Toppings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/ConsoleHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/ConsoleHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/MainAndHelpers/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Orders/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
