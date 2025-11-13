@@ -9,13 +9,21 @@ public class Sandwich extends OrderItem{
     private String bread;
     private int length;
     private boolean toasted;
-    private List<Toppings> toppings;
+    private final List<Toppings> toppings;
 
     public Sandwich(String bread, int length, boolean toasted) {
         this.bread = bread;
         this.length = length;
         this.toasted = toasted;
         this.toppings = new ArrayList<>();
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setBread(String bread) {
+        this.bread = bread;
     }
 
     public boolean isToasted() {
@@ -50,13 +58,13 @@ public class Sandwich extends OrderItem{
 
     @Override
     public String toString() {
-        String toppingsList = ""; // Starts from here onward and checks for toppings.
+        StringBuilder toppingsList = new StringBuilder(); // Starts from here onward and checks for toppings.
         if (!toppings.isEmpty()) {
-            toppingsList = " | Toppings: "; // Where list begins being built.
+            toppingsList = new StringBuilder(" | Toppings: "); // Where list begins being built.
             for (int i = 0; i < toppings.size(); i++) {
-                toppingsList += toppings.get(i);
+                toppingsList.append(toppings.get(i));
                 if (i < toppings.size() - 1) {
-                    toppingsList += ", "; // Loops through and adds comma's for every topping passed.
+                    toppingsList.append(", "); // Loops through and adds comma's for every topping passed.
                 }
             }
         }
@@ -66,6 +74,8 @@ public class Sandwich extends OrderItem{
                 toppingsList +
                 String.format(" | $%.2f", getPrice());
     }
+
+
     public List<Toppings> getToppings() {
         return toppings;
     }

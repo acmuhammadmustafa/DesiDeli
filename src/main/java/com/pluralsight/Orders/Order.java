@@ -7,9 +7,9 @@ import java.util.*;
 public class Order {
 
     // Variables:
-    private LocalDateTime orderTime;
-    private String receiptFileName;
-    private List<OrderItem> items = new ArrayList<>();
+    private final LocalDateTime orderTime;
+    private final String receiptFileName;
+    private final List<OrderItem> items = new ArrayList<>();
     private static int orderCounter = 0;
 
     // Constructor:

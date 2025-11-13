@@ -237,25 +237,107 @@ public class MenuService {
            ╘════════════════════════╛
 """);
         // Go through the order to get sandwiches only:
-        List<Sandwich> sandwiches = order.getItems().stream().filter(item -> item instanceof Sandwich).map(item -> (Sandwich) item).toList();
+        List<Sandwich> sandwiches = new ArrayList<>();
+        for (OrderItem item : order.getItems()) {
+            if (item instanceof Sandwich) {
+                sandwiches.add((Sandwich) item);
+            }
+        }
 
         // If there aren't any sandwiches, you get sent back to the order menu:
-        if (sandwiches.isEmpty()){
+        if (sandwiches.isEmpty()) {
             System.out.println("No sandwiches to edit in this order.");
-            System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
             return;
         }
 
-        // Making a displayable list for the helper menu:
-        List<String> sandwichOptions = new ArrayList<>();
-        
+        // Prompt for user to choose which sandwich they'd like to edit:
+        List<String> sandwichList = new ArrayList<>();
+        for (Sandwich s : sandwiches) {
+            sandwichList.add(s.toString()); // Makes readable line. example:( 8" | Toasted | White bread| etc. )
+        }
 
+        String chosenSandwich = ConsoleHelper.promptForHelperMenu("Select a sandwich to edit:", sandwichList, true);
 
-//        for (OrderItem OI : order.getItems()){
-//            System.out.println(OI);
-//        for (int i = 0; i < items.size(); i++) {
-//            System.out.println((i+1) + ") " + items.get(i));
-//        }
+        if (chosenSandwich == null) // Cancel/Return option
+            return;
+
+        // Find the sandwich that they selected from above:
+        Sandwich selected = null; // Starts as null so that String choice "selected" is initialized.
+        for (Sandwich s : sandwiches) {
+            if (s.toString().equals(chosenSandwich)) {
+                selected = s;
+                break; // If all goes well.
+            }
+        }
+        if (selected == null)
+            return; // Safety net for selected remaining as null.
+
+        // Editing menu:
+        boolean editSandwich = true;
+        while (editSandwich) {
+            String choice = ConsoleHelper.promptForHelperMenu("Editing: " + selected + "\nWhat would you like to do?", List.of("Change bread", "Change size", "Toggle toasted", "Add topping", "Remove topping", "Return to previous menu"), false);
+
+            switch (choice) {
+                case "Change bread" -> {
+                    String changedBread = ConsoleHelper.promptForHelperMenu("Choose new bread:", List.of("White", "Wheat", "Rye", "Wrap"), true);
+                    if (changedBread != null) {
+                        selected.setBread(changedBread);
+                        System.out.println("Bread changed to " + changedBread + ".");
+                    }
+                }
+
+                case "Change size" -> {
+                    String changedSize = ConsoleHelper.promptForHelperMenu("Choose sandwich size:", List.of("4\"", "8\"", "12\""), true);
+                    if (changedSize != null) {
+                        int newLength = Integer.parseInt(changedSize.replace("\"", ""));
+                        selected.setLength(newLength);
+                        System.out.println("Size changed to " + newLength + "\".");
+                    }
+                }
+
+                case "Toggle toasted" -> {
+                    selected.setToasted(!selected.isToasted());
+                    System.out.println("Changed toasted option!");
+                }
+
+                case "Add topping" -> {
+                    String addedTopping = ConsoleHelper.promptForHelperMenu("Choose topping to add:", List.of("Lettuce", "Peppers", "Onions", "Tomatoes", "Jalapeños", "Cucumbers", "Pickles", "Guacamole", "Mushrooms"), true);
+                    if (addedTopping != null) {
+                        selected.addTopping(new Toppings(addedTopping) {});
+                        System.out.println(addedTopping + " added!");
+                    }
+                }
+
+                case "Remove topping" -> {
+                    if (selected.getToppings().isEmpty()) {
+                        System.out.println("No toppings to remove.");
+                        break;
+                    }
+
+                    List<String> toppingNames = new ArrayList<>();
+                    for (Toppings t : selected.getToppings()) {
+                        toppingNames.add(t.getName());
+                    }
+
+                    String toRemove = ConsoleHelper.promptForHelperMenu(
+                            "Select topping to remove:", toppingNames, true);
+                    if (toRemove != null) {
+                        for (int i = 0; i < selected.getToppings().size(); i++) {
+                            if (selected.getToppings().get(i).getName().equalsIgnoreCase(toRemove)) {
+                                selected.getToppings().remove(i);
+                                System.out.println(toRemove + " removed!");
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                case "Return to editing menu" -> editSandwich = false; // Basically closes out the editing.
+
+                case null -> {} // Didn't want any error signs so just added this.
+                default -> System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
     }
 
     private boolean checkout(Order order) {

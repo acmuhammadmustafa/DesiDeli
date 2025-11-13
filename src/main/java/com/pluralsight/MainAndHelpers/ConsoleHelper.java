@@ -79,7 +79,9 @@ public class ConsoleHelper {
         System.out.println("\n" + title); // Displays the title/question but creates a blank line before.
         for (int i = 0; i < options.size(); i++)
             System.out.printf("%d) %s\n", i + 1, options.get(i));// Prints each option (%d = menu number | %s = actual option | \n = new line) i+1 = index starts at 0 but +1 so string option 1 is ACTUALLY equal to 1 rather than 0.
-        if (allowCancel) System.out.println("0) Cancel/Return");
+        if (allowCancel){
+            System.out.println("0) Cancel/Return");
+        }
 
         while (true) { // While true = keeps asking till valid option is given.
             int choice = promptForInt("Enter your choice");
