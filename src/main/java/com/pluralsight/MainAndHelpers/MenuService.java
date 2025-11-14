@@ -122,6 +122,7 @@ public class MenuService {
         boolean toasted = ConsoleHelper.promptForYesNo("Would you like it toasted?");
         Sandwich sandwich = new Sandwich(bread, length, toasted);
         System.out.println("『━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━』");
+
         // Add meats
         while (ConsoleHelper.promptForYesNo("Add meat?")) {
             String meatType = ConsoleHelper.promptForHelperMenu("Choose meat:" , List.of("Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"), true);

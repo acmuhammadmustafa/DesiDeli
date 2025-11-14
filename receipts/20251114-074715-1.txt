@@ -1,0 +1,13 @@
+📝━━━━━━━━━━━━━━━━━━━━━━━DESI DELI━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝
+Date: 2025-11-14 07:47:15
+
+Sandwiches:
+  - 8" | White bread | Toasted | Toppings: Chicken (extra), Provolone, Lettuce, Peppers, Onions, | Sauce: Mayo | $11.50
+  - Roast Beef Sandwich | 8" | wheat bread | Toasted | Toppings: Roast beef, Provolone, Lettuce, Onions, Tomatoes, | Sauce: Mayo | $10.50
+Drinks:
+  - Medium Dirty Chai | $2.50
+Chips:
+  - BBQ Chips | $1.50
+
+Total: $26.00
+📝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━📝
