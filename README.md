@@ -42,7 +42,7 @@ Features:
 
 Layout Diagram:
 
-<img width="2620" height="1452" alt="canvas_desi-deli-251113_2053" src="https://github.com/user-attachments/assets/73b3fd80-88c1-481c-9a04-c35ef68a79f2" />
+<img width="1724" height="957" alt="image" src="https://github.com/user-attachments/assets/e8ec8efc-f05f-433b-854b-7ad611a54aa0" />
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
